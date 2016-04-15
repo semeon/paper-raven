@@ -4,7 +4,10 @@ import {chars} from './js/data/chars.js';
 import GameEngine from './js/engine/engine.js';
 
 // Views
-import Container from './js/views/container.jsx';
+import Container from './js/views/navbar.jsx';
+import LeftPanel from './js/views/leftpanel.jsx';
+
+// import Container from './js/views/container.jsx';
 
 
 
