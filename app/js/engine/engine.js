@@ -12,9 +12,7 @@ function GameEngine(p) {
   }
 
   this.start = function(p) {
-
 		// TestDice(dice);
-
   	// var charNaf = new Character(p.chars["Nafanail"]);
   	// var charTan = new Character(p.chars["Tan"]);
   	var charRan = new Character(GenerateChar("Random", dice));
@@ -24,6 +22,8 @@ function GameEngine(p) {
 
 export default GameEngine;
 
+
+// ********************************************
 function GenerateChar(name, dice) {
 
 	var char = {};
