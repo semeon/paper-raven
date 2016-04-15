@@ -65,7 +65,7 @@ class Dice {
 	}
 }
 
-export var diceInstance = new Dice();
+export var dice = new Dice();
 
 
 // export default Dice;

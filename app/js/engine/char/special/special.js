@@ -11,7 +11,7 @@ class Special {
     this.stats["L"] = p["L"];
   }
 
-  getSpecial(p) {
+  getStats(p) {
     if (p) {
       return this.stats[p];
     } else {

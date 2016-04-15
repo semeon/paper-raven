@@ -1,10 +1,8 @@
-import {diceInstance} from './dice/dice.js';
+import {dice} from './dice/dice.js';
 import Character from './char/character.js';
 
 function GameEngine(p) {
 
-	// var dice = new Dice();
-	var dice = diceInstance;
 	console.log("GameEngine instance created.");
 
   this.log = function(m) {
@@ -15,8 +13,10 @@ function GameEngine(p) {
 		// TestDice(dice);
   	// var charNaf = new Character(p.chars["Nafanail"]);
   	// var charTan = new Character(p.chars["Tan"]);
-  	var charRan = new Character(GenerateChar("Random", dice));
-
+  	var charRan = new Character(GenerateChar("Random"));
+  	
+  	console.log(">>>>>>>>> Start!");
+		PrintAttack(charRan);
   }
 }
 
@@ -24,7 +24,24 @@ export default GameEngine;
 
 
 // ********************************************
-function GenerateChar(name, dice) {
+
+function PrintAttack(char) {
+
+	for(var i=0; i<10; i++) {
+
+		var attack = char.getAttack();
+
+		var log = char.getName() + " ";
+		log = log + " attack: " + attack.damage;
+		if (attack.isCritical) log = log + " (critical)";
+
+		console.log(log);
+	}
+}
+
+
+
+function GenerateChar(name) {
 
 	var char = {};
 	char.person = {};
