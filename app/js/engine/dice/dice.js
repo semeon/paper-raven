@@ -36,7 +36,7 @@ class Dice {
 		if (!count) count = 1;
 
 		var result = {};
-		result.total = 0;
+		result.value = 0;
 		result.details = [];
 
 		for (var i=0; i<count; i++) {
@@ -46,7 +46,7 @@ class Dice {
 			var diceRoll = this.roll(1, sides);
 
 			result.details.push(diceRoll);
-			result.total = result.total + diceRoll;
+			result.value = result.value + diceRoll;
 		}
 
 		return result;
@@ -54,6 +54,10 @@ class Dice {
 
 	rollD6(count) {
 		return this.d(6, count);
+	}
+
+	rollD10(count) {
+		return this.d(10, count);
 	}
 
 	rollD20(count) {

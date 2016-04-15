@@ -1,10 +1,11 @@
 import React from 'react';
 
+import {chars} from './js/data/chars.js';
 import GameEngine from './js/engine/engine.js';
 
 var ge = new GameEngine();
 
-ge.start();
+ge.start({"chars":chars});
 
 // console.log(ge.private);
 
