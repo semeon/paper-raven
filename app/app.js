@@ -3,6 +3,11 @@ import React from 'react';
 import {chars} from './js/data/chars.js';
 import GameEngine from './js/engine/engine.js';
 
+// Views
+import Container from './js/views/container.jsx';
+
+
+
 var ge = new GameEngine();
 
 ge.start({"chars":chars});
@@ -15,14 +20,5 @@ ge.start({"chars":chars});
 
 
 
-import View from './js/views/view.jsx';
+import Stats from './js/views/stats/stats.jsx';
 
-// render(<View/>, document.getElementById('app'));
-
-// class App extends React.Component {
-//   render () {
-//     return <p> Hello React!</p>;
-//   }
-// }
-
-//render(<App/>, document.getElementById('app'));
