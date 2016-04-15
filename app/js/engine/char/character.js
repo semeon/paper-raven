@@ -18,6 +18,9 @@ class Character {
   getName() {
   	return this.person.getName();
   }
+  getGender() {
+  	return this.person.getGender();
+  }
 
   getDerivedStats() {
   	return this.derived.getStats();

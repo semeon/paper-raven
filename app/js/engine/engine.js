@@ -1,27 +1,33 @@
 import {dice} from './dice/dice.js';
 import Character from './char/character.js';
 
-function GameEngine(p) {
+export class GameEngine {
 
-	console.log("GameEngine instance created.");
+	constructor(p) {
+		console.log("GameEngine instance created.");
+		this.hero = new Character(GenerateChar("Tannhauser"));
+		// this.charRan = new Character(GenerateChar("Random"));
+		
+  	// var charNaf = new Character(p.chars["Nafanail"]);
+  	// var charTan = new Character(p.chars["Tan"]);
+	}
 
-  this.log = function(m) {
+  log(m) {
 		console.log(m);
   }
 
-  this.start = function(p) {
+  start(p) {
 		// TestDice(dice);
-  	// var charNaf = new Character(p.chars["Nafanail"]);
-  	// var charTan = new Character(p.chars["Tan"]);
-  	var charRan = new Character(GenerateChar("Random"));
   	
-  	console.log(">>>>>>>>> Start!");
-		PrintAttack(charRan);
+		// PrintAttack(hero);
   }
+
+  getHero() {
+  	return this.hero;
+  }
+
+
 }
-
-export default GameEngine;
-
 
 // ********************************************
 

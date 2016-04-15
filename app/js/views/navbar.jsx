@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-class Navbar extends React.Component {
+export class Navbar extends React.Component {
   render () {
     return (
 			<nav className="navbar navbar-default navbar-static-top">
@@ -34,4 +34,3 @@ class Navbar extends React.Component {
   }
 }
 
-render(<Navbar/>, document.getElementById('navbar'));
