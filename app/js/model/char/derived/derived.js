@@ -10,8 +10,8 @@ class Derived {
     this.stats.damageRange.min = Math.floor(this.stats.damageRange.max/2);
 
     // Critical hit
-    this.stats.critChance = 15;
-    this.stats.critMultipier = 5;
+    this.stats.critChance = char.special.getStats("L");
+    this.stats.critMultipier = 3;
 
     // Dodge
 

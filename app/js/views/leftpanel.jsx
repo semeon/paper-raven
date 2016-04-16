@@ -29,7 +29,7 @@ export class LeftPanel extends React.Component {
 						    			aria-expanded="false"
 						    			aria-controls="statsBody"
 						    			autocomplete="off">
-									  Show/Hide
+									  Stats
 									</button>
 					  		</div>
 					  	</div>
@@ -50,7 +50,7 @@ export class LeftPanel extends React.Component {
 					  	</div>					    
 					  </div>
 					  <div className="panel-body">
-			  			<Stats hero={this.props.hero}/>
+			  			
 					  </div>
 					</div>
 

@@ -18,15 +18,15 @@ class StatsSpecial extends React.Component {
 					</tr>
 					<tr>
 						<td>Damage</td>
-						<td><span className="badge center-block">10-15</span></td>
+						<td><span className="badge center-block">{this.props.derived.getDamageRange().min} - {this.props.derived.getDamageRange().max}</span></td>
 					</tr>
 					<tr>
 						<td>Crit %</td>
-						<td><span className="badge center-block">10%</span></td>
+						<td><span className="badge center-block">{this.props.derived.getCritChance()}%</span></td>
 					</tr>
 					<tr>
 						<td>Crit Dam</td>
-						<td><span className="badge center-block">x5</span></td>
+						<td><span className="badge center-block">x{this.props.derived.getCritMultipier()}</span></td>
 					</tr>
 					<tr>
 						<td>Dodge %</td>

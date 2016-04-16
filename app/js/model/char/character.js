@@ -26,8 +26,8 @@ class Character {
     return this.special;
   }
 
-  getDerivedStats() {
-  	return this.derived.getStats();
+  getDerived() {
+  	return this.derived;
   }
 
   getAttack() {

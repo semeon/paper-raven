@@ -8,16 +8,18 @@ import StatsCombat from './statscombat.jsx';
 class Stats extends React.Component {
   render () {
 
+
+
     return (
-    	<div  id="statsBody" className="panel-body collapse clearfix">
+    	<div  id="statsBody" className="panel-body collapse in clearfix">
 
 				<div className="row">
 				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
-				  	<StatsSpecial hero={this.props.hero.getSpecial().getStats()}/>
+				  	<StatsSpecial special={this.props.hero.getSpecial()}/>
 					</div>
 
 				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
-				  	<StatsCombat hero={this.props.hero.getSpecial().getStats()}/>
+				  	<StatsCombat derived={this.props.hero.getDerived()}/>
 					</div>
 				</div>
 
