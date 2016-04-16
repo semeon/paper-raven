@@ -22,6 +22,10 @@ class Character {
   	return this.person.getGender();
   }
 
+  getSpecial() {
+    return this.special;
+  }
+
   getDerivedStats() {
   	return this.derived.getStats();
   }

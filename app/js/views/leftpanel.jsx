@@ -13,11 +13,12 @@ export class LeftPanel extends React.Component {
 
 
     return (
-			  <div className="col-lg-3 col-md-4">
+			  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
 
 					<div className="panel panel-default">
 					  <div className="panel-heading">
-					    <h3 className="panel-title"><strong> {this.props.hero.getName()} {genderIconNode} </strong></h3>
+					    <h5><strong> {this.props.hero.getName()} {genderIconNode}</strong></h5>
+					    <p className="panel-title">	HP: 100 | Level: 3 | XP: 2500/3000</p>
 					  </div>
 					  <div className="panel-body">
 			  			<Stats hero={this.props.hero}/>
