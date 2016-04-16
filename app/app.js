@@ -5,8 +5,8 @@ import {chars} from './js/data/chars.js';
 import {GameEngine} from './js/engine/engine.js';
 
 // Views
-import {Navbar} from './js/views/navbar.jsx';
-import {LeftPanel} from './js/views/leftpanel.jsx';
+import {Navbar} from './js/views/navbar/navbar.jsx';
+import {LeftPanel} from './js/views/leftpanel/leftpanel.jsx';
 
 // Execute
 render(<Navbar/>, document.getElementById('navbar'));

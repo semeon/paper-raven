@@ -2,7 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import Stats from './stats/stats.jsx';
-import './../../sass/leftpanel.scss';
+import './../../../sass/leftpanel.scss';
 
 export class LeftPanel extends React.Component {
   render () {
@@ -13,7 +13,7 @@ export class LeftPanel extends React.Component {
   	}
 
     return (
-			  <div className="col-xs-6 col-sm-4 col-md-4 col-lg-3">
+			  <div className="col-xs-4 col-sm-4 col-md-3 col-lg-2" id="left-panel">
 
 					<div className="panel panel-default">
 					  <div className="panel-heading">

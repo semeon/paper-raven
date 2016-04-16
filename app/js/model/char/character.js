@@ -9,6 +9,7 @@ import Experience from './experience/experience.js';
 class Character {
 
   constructor(p) {
+    this._id = p.id;
 
 		this.person = new Person(p.person);
 		this.special = new Special(p.special);
@@ -16,10 +17,12 @@ class Character {
 
     // this.health = new Health();
     this.exp = new Experience(this);
+	}
 
-		this.print();
+  // Read
+  getID() {
+    return this._id;
   }
-
   getName() {
   	return this.person.getName();
   }
@@ -35,9 +38,19 @@ class Character {
   	return this.derived;
   }
 
+  getCombatInitiative() {
+    return this.exp.getLevel();
+  }
+
+  // Write
   gainXp(xp) {
     this.exp.gainXp(xp);
   }
+
+
+
+
+
 
   // REFACTOR!! Move to engine
   getAttack() { 
@@ -54,33 +67,6 @@ class Character {
 
   	return attack;
   }
-
-  // REFACTOR!! Move to engine
-  print() {
-    console.log("");
-    console.log("Character: " + this.person.getName() + "/" + this.person.getGender());
-
-		// console.log("- SPECIAL:");
-		// console.log("-- S: " + 		this.special.getStats("S"));
-		// console.log("-- P: " + 		this.special.getStats("P"));
-		// console.log("-- E: " + 		this.special.getStats("E"));
-		// console.log("-- C: " + 		this.special.getStats("C"));
-		// console.log("-- I: " + 		this.special.getStats("I"));
-		// console.log("-- A: " + 		this.special.getStats("A"));
-		// console.log("-- L: " + 		this.special.getStats("L"));
-
-		// console.log("- ATTACK: ");
-		// console.log("-- Base Damage: " + this.derived.getDamageRange().min + "-" + this.derived.getDamageRange().max);
-		// console.log("-- Crit Chance: " + this.derived.getCritChance() + "%");
-		// console.log("-- Crit Damage: x" + this.derived.getCritMultipier());
-
-    console.log("- EXPERIENCE: ");
-    console.log("-- XP:  " + this.exp.getXp());
-    console.log("-- LVL: " + this.exp.getLevel());
-    console.log("-- SkP: " + this.exp.getSkillPoints());
-
-
-	}
 
 }
 

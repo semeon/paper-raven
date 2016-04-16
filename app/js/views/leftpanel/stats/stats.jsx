@@ -14,11 +14,11 @@ class Stats extends React.Component {
     	<div  id="statsBody" className="panel-body collapse in clearfix">
 
 				<div className="row">
-				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
+				  <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5 stats-group">
 				  	<StatsSpecial special={this.props.hero.getSpecial()}/>
 					</div>
 
-				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
+				  <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7 stats-group">
 				  	<StatsCombat derived={this.props.hero.getDerived()}/>
 					</div>
 				</div>

@@ -12,31 +12,31 @@ class StatsCombat extends React.Component {
 				</thead>
 				<tbody>
 					<tr>
-						<td>Strength</td>
+						<td>S</td>
 						<td><span className="badge center-block">{this.props.special.getStats("S")}</span></td>
 					</tr>
 					<tr>
-						<td>Perception</td>
+						<td>P</td>
 						<td><span className="badge center-block">{this.props.special.getStats("P")}</span></td>
 					</tr>
 					<tr>
-						<td>Endurance</td>
+						<td>E</td>
 						<td><span className="badge center-block">{this.props.special.getStats("E")}</span></td>
 					</tr>
 					<tr>
-						<td>Charisma</td>
+						<td>C</td>
 						<td><span className="badge center-block">{this.props.special.getStats("C")}</span></td>
 					</tr>
 					<tr>
-						<td>Intelligence</td>
+						<td>I</td>
 						<td><span className="badge center-block">{this.props.special.getStats("I")}</span></td>
 					</tr>
 					<tr>
-						<td>Agility</td>
+						<td>A</td>
 						<td><span className="badge center-block">{this.props.special.getStats("A")}</span></td>
 					</tr>
 					<tr>
-						<td>Luck</td>
+						<td>L</td>
 						<td><span className="badge center-block">{this.props.special.getStats("L")}</span></td>
 					</tr>
 				</tbody>
