@@ -3,6 +3,8 @@ import Person from './person/person.js';
 import Special from './special/special.js';
 import Derived from './derived/derived.js';
 
+import Experience from './experience/experience.js';
+
 
 class Character {
 
@@ -11,6 +13,9 @@ class Character {
 		this.person = new Person(p.person);
 		this.special = new Special(p.special);
 		this.derived = new Derived(this);
+
+    // this.health = new Health();
+    this.exp = new Experience(this);
 
 		this.print();
   }
@@ -30,7 +35,12 @@ class Character {
   	return this.derived;
   }
 
-  getAttack() {
+  gainXp(xp) {
+    this.exp.gainXp(xp);
+  }
+
+  // REFACTOR!! Move to engine
+  getAttack() { 
   	var damRange = this.derived.getDamageRange();
   	var baseDamage = dice.roll(damRange.min, damRange.max);
 		var damMultipier = 1;
@@ -45,23 +55,29 @@ class Character {
   	return attack;
   }
 
-
+  // REFACTOR!! Move to engine
   print() {
-		console.log("A Character instance created: " + this.person.getName() + "/" + this.person.getGender());
+    console.log("");
+    console.log("Character: " + this.person.getName() + "/" + this.person.getGender());
 
-		console.log("- SPECIAL:");
-		console.log("-- S: " + 		this.special.getStats("S"));
-		console.log("-- P: " + 		this.special.getStats("P"));
-		console.log("-- E: " + 		this.special.getStats("E"));
-		console.log("-- C: " + 		this.special.getStats("C"));
-		console.log("-- I: " + 		this.special.getStats("I"));
-		console.log("-- A: " + 		this.special.getStats("A"));
-		console.log("-- L: " + 		this.special.getStats("L"));
+		// console.log("- SPECIAL:");
+		// console.log("-- S: " + 		this.special.getStats("S"));
+		// console.log("-- P: " + 		this.special.getStats("P"));
+		// console.log("-- E: " + 		this.special.getStats("E"));
+		// console.log("-- C: " + 		this.special.getStats("C"));
+		// console.log("-- I: " + 		this.special.getStats("I"));
+		// console.log("-- A: " + 		this.special.getStats("A"));
+		// console.log("-- L: " + 		this.special.getStats("L"));
 
-		console.log("- ATTACK: ");
-		console.log("-- Base Damage: " + this.derived.getDamageRange().min + "-" + this.derived.getDamageRange().max);
-		console.log("-- Crit Chance: " + this.derived.getCritChance() + "%");
-		console.log("-- Crit Damage: x" + this.derived.getCritMultipier());
+		// console.log("- ATTACK: ");
+		// console.log("-- Base Damage: " + this.derived.getDamageRange().min + "-" + this.derived.getDamageRange().max);
+		// console.log("-- Crit Chance: " + this.derived.getCritChance() + "%");
+		// console.log("-- Crit Damage: x" + this.derived.getCritMultipier());
+
+    console.log("- EXPERIENCE: ");
+    console.log("-- XP:  " + this.exp.getXp());
+    console.log("-- LVL: " + this.exp.getLevel());
+    console.log("-- SkP: " + this.exp.getSkillPoints());
 
 
 	}

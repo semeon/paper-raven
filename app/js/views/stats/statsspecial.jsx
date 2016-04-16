@@ -3,10 +3,6 @@ import {render} from 'react-dom';
 
 class StatsCombat extends React.Component {
   render () {
-
-  	console.log(this.props.special);
-  	console.log(this.props.special.getStats());
-
     return (
 			<table className="table table-condensed">
 				<thead>

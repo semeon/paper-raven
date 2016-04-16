@@ -17,8 +17,13 @@ export class GameEngine {
   }
 
   start(p) {
+
+  	this.hero.gainXp(1000);
+
+  	this.hero.print();
+
+
 		// TestDice(dice);
-  	
 		// PrintAttack(hero);
   }
 
