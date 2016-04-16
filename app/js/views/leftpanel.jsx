@@ -2,6 +2,7 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import Stats from './stats/stats.jsx';
+import './../../sass/leftpanel.scss';
 
 export class LeftPanel extends React.Component {
   render () {
@@ -17,13 +18,41 @@ export class LeftPanel extends React.Component {
 					<div className="panel panel-default">
 					  <div className="panel-heading">
 					    <h5><strong> {this.props.hero.getName()} <i className={genderIconClass} aria-hidden="true"></i></strong></h5>
-					    <p className="panel-title">	HP: 100 | Level: 3 | XP: 2500/3000</p>
+					  	<div className="row">
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+					    		<h6 className="pull-left">HP: 100 | LVL: 3 | XP: 2500/3000</h6>
+						    	<button 
+						    			type="button" 
+						    			className="btn btn-default btn-xs pull-right" 
+						    			data-toggle="collapse"
+						    			data-target="#statsBody"
+						    			aria-expanded="false"
+						    			aria-controls="statsBody"
+						    			autocomplete="off">
+									  Show/Hide
+									</button>
+					  		</div>
+					  	</div>
+
+					  </div>
+					  <div className="panel-body" >
+			  			<Stats hero={this.props.hero}/>
+					  </div>
+					</div>
+
+					<div className="panel panel-default">
+					  <div className="panel-heading">
+					    <h5><strong>Log</strong></h5>
+					  	<div className="row">
+					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+					  		</div>
+					  	</div>					    
 					  </div>
 					  <div className="panel-body">
 			  			<Stats hero={this.props.hero}/>
 					  </div>
 					</div>
-			  	
 
 			  </div>
     );

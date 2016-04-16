@@ -14,7 +14,6 @@ module.exports = {
   entry: {
     js:         PATHS.app + '/app.js',
     html:       PATHS.app + '/index.html',    
-    stylesheet: PATHS.app + '/sass/leftpanel.scss',
   },
 
   output: {
