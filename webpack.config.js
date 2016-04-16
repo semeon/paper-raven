@@ -12,12 +12,13 @@ module.exports = {
   // latter form given it's convenient with more complex configurations.
 
   entry: {
-    js: PATHS.app + '/app.js',
+    js:         PATHS.app + '/app.js',
     html:       PATHS.app + '/index.html',    
+    stylesheet: PATHS.app + '/sass/leftpanel.scss',
   },
 
   output: {
-    path: PATHS.build,
+    path:     PATHS.build,
     filename: "bundle.js"
   },
 
