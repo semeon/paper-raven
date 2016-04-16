@@ -5,14 +5,14 @@ const PATHS = {
   build: path.join(__dirname, 'build')
 };
 
-console.log(PATHS.app);
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
 module.exports = {
   // Entry accepts a path or an object of entries. We'll be using the
   // latter form given it's convenient with more complex configurations.
 
   entry: {
-    javascript: PATHS.app + '/app.js',
+    js: PATHS.app + '/app.js',
     html:       PATHS.app + '/index.html',    
   },
 
@@ -36,6 +36,18 @@ module.exports = {
         include: PATHS.app,        
         loader: "file?name=[name].[ext]",
       },   
+      {
+          test: /\.scss$/,
+          loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+      }      
     ]
   },  
+  plugins: [
+    new ExtractTextPlugin('styles.css'),
+  ]
+  // resolve: {
+  //   extensions: ['', '.sass'],
+  //   root: [path.join(__dirname, './app/sass')]
+  // }
+
 };
