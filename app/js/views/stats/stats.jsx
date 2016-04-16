@@ -10,11 +10,11 @@ class Stats extends React.Component {
     	<div>
 
 				<div className="row">
-				  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
 				  	<StatsSpecial hero={this.props.hero.getSpecial().getStats()}/>
 					</div>
 
-				  <div className="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+				  <div className="col-xs-12 col-sm-12 col-md-6 col-lg-6 stats-group">
 				  	<StatsCombat hero={this.props.hero.getSpecial().getStats()}/>
 					</div>
 				</div>

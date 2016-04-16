@@ -1,5 +1,5 @@
-import {dice} from './dice/dice.js';
-import Character from './char/character.js';
+import {dice} from './../model/dice/dice.js';
+import Character from './../model/char/character.js';
 
 export class GameEngine {
 
