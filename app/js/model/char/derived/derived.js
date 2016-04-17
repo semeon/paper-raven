@@ -1,62 +1,37 @@
+import CombatStats from './combatstats.js';
+
 class Derived {
 
   constructor(char) {
-
-    this.stats = {};
-
-    // Unarmed damage
-    this.stats.damageRange = {};
-    this.stats.damageRange.max = Math.floor(char.getSpecial().getStats("S")/2);
-    this.stats.damageRange.min = Math.floor(this.stats.damageRange.max/2);
-
-    // Action Points
-    this.stats.actionPoints = char.special.getStats("A");
-
-    // Critical hit
-    this.stats.critChance = char.special.getStats("L")*10; // x1
-    this.stats.critMultipier = 10; // 3
-
-    // Dodge
-    this.stats.dodgeChance = Math.floor( (char.special.getStats("A") + char.special.getStats("P") + char.special.getStats("L")) / 2 );
-
-    // Dodge
-    this.stats.baseDT = Math.floor( char.special.getStats("E") / 2 );
-
-    // Damage threshold
-    this.stats.armourDT = 0;
-    this.stats.DT = this.stats.baseDT + this.stats.armourDT;
-
+    this.char = char;
+    this.combat = new CombatStats(char);
 
   }
 
-  getStats() {
-    return this.stats;
-  }
-  
-  getDamageRange() {
-    return this.stats.damageRange;
-  }
+  // Combat 
 
-  getCritChance() {
-    return this.stats.critChance;
-  }
+    getCombatInitiative() {
+      return this.char.getExp().getLevel();
+    }
 
-  getCritMultipier() {
-    return this.stats.critMultipier;
-  }  
-
-  getDodgeChance() {
-    return this.stats.dodgeChance;
-  }
-
-  getDT() {
-    return this.stats.DT;
-  }
-
-
-  getAP() {
-    return this.stats.actionPoints;
-  }
+    getCombatStats() { // ??
+      return this.combat;
+    }
+    getDamageRange() {
+      return this.combat.damageRange;
+    }
+    getCritChance() {
+      return this.combat.critChance;
+    }
+    getCritMultipier() {
+      return this.combat.critMultipier;
+    }  
+    getDodgeChance() {
+      return this.combat.dodgeChance;
+    }
+    getDT() {
+      return this.combat.DT;
+    }
 
 }
 

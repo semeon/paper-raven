@@ -4,7 +4,7 @@ class Combat {
 
   constructor(p) {
     this.order = p;
-    this.order.sort(function(a, b){return b.getCombatInitiative() - a.getCombatInitiative()});
+    this.order.sort(function(a, b){return b.getDerived().getCombatInitiative() - a.getDerived().getCombatInitiative()});
 
     this.actors = {};
     for (var i=0; i<this.order.length; i++) {
@@ -12,7 +12,7 @@ class Combat {
       this.actors[key] = this.order[i]; 
     }
 
-    this.printOrder();
+    // this.printOrder();
   }
 
   set(p) {
@@ -27,7 +27,7 @@ class Combat {
       console.log("** Combat cycle starts **********");
 
       var turnCounter = 0;
-      // Choose Char
+
       for (var i=0; i<this.order.length; i++) {
         var char = this.order[i];
         var charID = char.getID();
@@ -52,7 +52,8 @@ class Combat {
     console.log(this.actors);
     console.log("Combat order:");
     for (var i=0; i<this.order.length; i++) {
-      console.log("Name: " + this.order[i].getName() + ", initiative: " + this.order[i].getCombatInitiative());
+      console.log("Name: " + this.order[i].getPerson().getName() + 
+                  ", initiative: " + this.order[i].getDerived().getCombatInitiative());
     }
   }
 

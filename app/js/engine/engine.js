@@ -79,23 +79,3 @@ function GenerateChar(id, name) {
 
 	return char;
 }
-
-function TestDice(dice) {
-	  var roll = dice.roll(1, 6);
-  	console.log("1-6: " + roll);
-
-		roll = dice.rollBool(10);
-  	console.log("Bool: " + roll);
-
-  	roll = dice.rollD6();
-  	console.log( "d6 x _: " + roll.value + " = " + roll.details);
-
-  	roll = dice.rollD6(4);
-  	console.log( "d6 x 4: " + roll.value + " = " + roll.details);
-
-  	roll = dice.rollD20(1);
-  	console.log("d20 x 1: " + roll.value + " = " + roll.details);
-
-  	roll = dice.rollD20(4);
-  	console.log("d20 x 4: " + roll.value + " = " + roll.details);
-}

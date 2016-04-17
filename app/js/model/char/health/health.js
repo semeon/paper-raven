@@ -5,6 +5,10 @@ class Health {
     this.hp = this.maxHp;
   }
 
+  isAlive() {
+    return this.hp>0;
+  }
+
   getHP() {
     return this.hp;
   }
@@ -13,13 +17,13 @@ class Health {
     return this.maxHp;
   }
 
-  decHP(d) {
+  takeDamage(d) {
     if ( (this.hp - d) <= 0 ) {
       this.hp = 0;
     } else {
       this.hp -= d;
     }
-  }  
+  }
 
   incHP(d) {
     if ( (this.hp + d) >= this.maxHP ) {

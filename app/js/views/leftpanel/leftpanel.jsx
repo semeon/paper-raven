@@ -12,16 +12,16 @@ export class LeftPanel extends React.Component {
   		genderIconClass = "fa fa-female";
   	}
 
-  	var health = this.props.hero.getHP() + "/" + this.props.hero.getMaxHP();
-  	var level = this.props.hero.getLevel();
-  	var exp = this.props.hero.getXP();
+  	var health = this.props.hero.getHealth().getHP() + "/" + this.props.hero.getHealth().getMaxHP();
+  	var level = this.props.hero.getExp().getLevel();
+  	var exp = this.props.hero.getExp().getXP();
 
     return (
 			  <div className="col-xs-4 col-sm-4 col-md-3 col-lg-2" id="left-panel">
 
 					<div className="panel panel-default">
 					  <div className="panel-heading">
-					    <h5><strong> {this.props.hero.getName()} <i className={genderIconClass} aria-hidden="true"></i></strong></h5>
+					    <h5><strong> {this.props.hero.getPerson().getName()} <i className={genderIconClass} aria-hidden="true"></i></strong></h5>
 					  	<div className="row">
 					  		<div className="col-xs-12 col-sm-12 col-md-12 col-lg-12">
 					    		<h6 className="pull-left">HP: {health} | LVL: {level} | XP: 2500/3000</h6>
