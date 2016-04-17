@@ -13,19 +13,18 @@ class Derived {
     this.stats.actionPoints = char.special.getStats("A");
 
     // Critical hit
-    this.stats.critChance = char.special.getStats("L") * 10;
-    this.stats.critMultipier = 10;
+    this.stats.critChance = char.special.getStats("L")*10; // x1
+    this.stats.critMultipier = 10; // 3
 
     // Dodge
     this.stats.dodgeChance = Math.floor( (char.special.getStats("A") + char.special.getStats("P") + char.special.getStats("L")) / 2 );
 
     // Dodge
     this.stats.baseDT = Math.floor( char.special.getStats("E") / 2 );
+
+    // Damage threshold
     this.stats.armourDT = 0;
     this.stats.DT = this.stats.baseDT + this.stats.armourDT;
-
-
-    // Armor threshold
 
 
   }

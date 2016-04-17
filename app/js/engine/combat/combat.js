@@ -23,7 +23,7 @@ class Combat {
     var combatIsOver = false;
     var killSwitch = 0;
 
-    while (!combatIsOver && killSwitch<100) {
+    while (!combatIsOver && killSwitch<500) {
       console.log("** Combat cycle starts **********");
 
       var turnCounter = 0;

@@ -19,6 +19,12 @@ class Experience {
   	return this.level;
   }
 
+  getNextLevelXP() {
+    var next = this.level+1;
+    if (next > this.maxLevel) next = this.maxLevel;
+    return this.levelMap[next];
+  }
+
   getSkillPoints() {
     return this.skillPoints;
   }

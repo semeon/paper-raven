@@ -32,6 +32,28 @@ class Character {
   	return this.person.getGender();
   }
 
+  getHP() {
+    return this.health.getHP();
+  }
+
+  getMaxHP() {
+    return this.health.getMaxHP();
+  }
+
+  getLevel() {
+    return this.exp.getLevel();
+  }
+
+  getXP() {
+    return this.exp.getXP();
+  }
+
+  getNextLvlXP() {
+    return this.health.getMaxHP();
+  }
+
+
+
   getSpecial() {
     return this.special;
   }
@@ -102,7 +124,7 @@ class Character {
   }
 
   print(p) {
-    console.log("- Character: " + this.person.getName() + "/" + this.person.getGender());
+    console.log("- Character: " + this.person.getName() + ", " + this.person.getGender());
 
     if(p == "S") {
       console.log("- SPECIAL:");

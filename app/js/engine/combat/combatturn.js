@@ -24,7 +24,7 @@ class CombatTurn {
 	    // console.dir("Attack result:");
 	    // console.dir(attackResult);
 
-
+      console.log("");
 	    console.log("- " + this.actor.getName() + " hit " + this.target.getName() + " for " + attackResult.damage + " HP");
 	    this.target.applyAttack(attackResult);
 
