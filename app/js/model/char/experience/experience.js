@@ -1,7 +1,8 @@
 class Experience {
 
   constructor(p) {
-		this.xp = 0;
+		this.char = p;
+    this.xp = 0;
 		this.level = 1;
     this.skillPoints = 0;
 
@@ -10,7 +11,7 @@ class Experience {
     this.skillpointsPerLevel = 10;
   }
 
-  getXp() {
+  getXP() {
   	return this.xp;
   }
 
@@ -22,8 +23,8 @@ class Experience {
     return this.skillPoints;
   }
 
-  gainXp(xp) {
-    console.log("You earned " + xp + " XP.");
+  gainXP(xp) {
+    console.log(this.char.getName() + " earned " + xp + " XP.");
     this.xp += xp;
     while (this.xp >= this.levelMap[this.level+1]) {
       this.levelUp();
@@ -33,7 +34,7 @@ class Experience {
   levelUp() {
     this.level = this.level + 1;
     this.skillPoints += this.skillpointsPerLevel; 
-    console.log("Level Up! New level: " + this.level);
+    // console.log("Level Up! New level: " + this.level);
   }
 
 }

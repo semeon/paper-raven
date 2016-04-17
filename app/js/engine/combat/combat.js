@@ -1,3 +1,5 @@
+import CombatTurn from './combatturn.js';
+
 class Combat {
 
   constructor(p) {
@@ -11,34 +13,39 @@ class Combat {
     }
 
     this.printOrder();
-
-    this.enemiesMap = {};
-
   }
 
   set(p) {
-    this.enemiesMap = p;
   }
 
   start(p) {
-
     console.log("Combat satrted");
-    console.log(this.enemiesMap);
-
     var combatIsOver = false;
-    while (!combatIsOver) {
+    var killSwitch = 0;
 
-      console.log("Combat cycle:");
+    while (!combatIsOver && killSwitch<100) {
+      console.log("** Combat cycle starts **********");
+
+      var turnCounter = 0;
+      // Choose Char
       for (var i=0; i<this.order.length; i++) {
         var char = this.order[i];
         var charID = char.getID();
 
-        var target = this.enemiesMap[charID][0];
-
-        console.log(char.getName() + " attacks " + this.actors[target.getID()].getName());
+        if (char.isAlive()) {
+          var turn = new CombatTurn(char, this.order);
+          var turnResult = turn.make();
+          if (turnResult) turnCounter +=1;
+        }
       }
-      combatIsOver = true;
+
+      if (!turnCounter) combatIsOver = true;
+      
+      killSwitch += 1;
+      console.log("** Combat cycle ends ************");
+      console.log("");
     }    
+    console.log("Combat is over.");
   }
 
   printOrder() {
