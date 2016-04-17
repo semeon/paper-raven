@@ -22,18 +22,18 @@ export class GameEngine {
 
   start(p) {
 
-  	this.hero.gainXP(1000);
+  	this.hero.getExp().gainXP(1000);
 
 		var charRan1 = new Character(GenerateChar("charRan1", chance.first()));
-  	charRan1.gainXP(2000);
+  	charRan1.getExp().gainXP(2000);
   	charRan1.print("a");
 
 		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
-  	charRan2.gainXP(5000);
+  	charRan2.getExp().gainXP(5000);
   	charRan2.print("a");
 
 		// var charRan3 = new Character(GenerateChar("charRan3", chance.first()));
-  	// charRan3.gainXP(10000);
+  	// charRan3.getExp().gainXP(10000);
   	// charRan3.print("a");
 
 

@@ -8,7 +8,7 @@ export class LeftPanel extends React.Component {
   render () {
 
   	var genderIconClass = "fa fa-male";
-  	if (this.props.hero.getGender() == "female") {
+  	if (this.props.hero.getPerson().getGender() == "female") {
   		genderIconClass = "fa fa-female";
   	}
 

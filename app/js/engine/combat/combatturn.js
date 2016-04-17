@@ -14,11 +14,11 @@ class CombatTurn {
 
     if (this.target) {
   		// console.log("- Target: " + this.target.getPerson().getName());
-    	var attackAttempt = this.actor.getActions().attackRoll();
+    	var attackAttempt = this.actor.getCombatAbility().attackRoll();
 	    // console.dir("Attack attempt:");
 	    // console.dir(attackAttempt);
 
-    	var attackResult = this.target.getActions().defenseRoll(attackAttempt);
+    	var attackResult = this.target.getCombatAbility().defenseRoll(attackAttempt);
 	    // console.dir("Attack result:");
 	    // console.dir(attackResult);
 
@@ -26,7 +26,7 @@ class CombatTurn {
 	    console.log("- " +  this.actor.getPerson().getName() + " hit " + 
                           this.target.getPerson().getName() + " for " + 
                           attackResult.damage + " HP");
-	    this.target.getActions().applyAttack(attackResult);
+	    this.target.receiveAttack(attackResult);
 
 	    this.target.print("h");
     } else {

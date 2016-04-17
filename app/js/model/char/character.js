@@ -5,10 +5,7 @@ import Special from './special/special.js';
 import Health from './health/health.js';
 import Experience from './experience/experience.js';
 
-import Derived from './derived/derived.js';
-
-import Actions from './actions/actions.js';
-
+import CombatAbility from './abilities/combatAbility.js';
 
 class Character {
 
@@ -27,10 +24,8 @@ class Character {
     this.health = new Health(this);
     this.exp = new Experience(this);
 
-    this.derived = new Derived(this);
-
-    this.actions = new Actions(this);
-
+    this.combatAbility = new CombatAbility(this);
+    // this.derived = new Derived(this);
 	}
 
   getID() {
@@ -53,10 +48,22 @@ class Character {
     return this.derived; 
   }
 
-  getActions() { 
-    return this.actions; 
+  getCombatAbility() { 
+    return this.combatAbility; 
   }
 
+
+  receiveAttack(a) {
+    if (a.damage > 0) {
+      this.health.takeDamage(a.damage);
+    }
+    if (!this.health.isAlive()) {
+      console.log(this.person.getName() + " is dead.")
+    }
+  }
+
+
+/**
 
   // Person
     getName() {
@@ -94,6 +101,7 @@ class Character {
       this.exp.gainXP(xp);
     }
 
+*/
 
   // Output
     print(p) {
@@ -112,9 +120,9 @@ class Character {
 
       if (p == "a") {
         console.log("- ATTACK: ");
-        console.log("-- Base Damage: " +  this.derived.getDamageRange().min + "-" + this.derived.getDamageRange().max);
-        console.log("-- Crit Chance: " +  this.derived.getCritChance() + "%");
-        console.log("-- Crit Damage: x" + this.derived.getCritMultipier());
+        console.log("-- Base Damage: " +  this.combatAbility.getDamageRange().min + "-" + this.combatAbility.getDamageRange().max);
+        console.log("-- Crit Chance: " +  this.combatAbility.getCritChance() + "%");
+        console.log("-- Crit Damage: x" + this.combatAbility.getCritMultipier());
       }
 
       if (p == "x") {

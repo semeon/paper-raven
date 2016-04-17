@@ -30,7 +30,7 @@ class Experience {
   }
 
   gainXP(xp) {
-    console.log(this.char.getName() + " earned " + xp + " XP.");
+    console.log(this.char.getPerson().getName() + " earned " + xp + " XP.");
     this.xp += xp;
     while (this.xp >= this.levelMap[this.level+1]) {
       this.levelUp();

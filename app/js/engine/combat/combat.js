@@ -4,7 +4,7 @@ class Combat {
 
   constructor(p) {
     this.order = p;
-    this.order.sort(function(a, b){return b.getDerived().getCombatInitiative() - a.getDerived().getCombatInitiative()});
+    this.order.sort(function(a, b){return b.getCombatAbility().getInitiative() - a.getCombatAbility().getInitiative()});
 
     this.actors = {};
     for (var i=0; i<this.order.length; i++) {
@@ -28,15 +28,18 @@ class Combat {
 
       var turnCounter = 0;
 
+      // Rounds - each char makes one turn per round
       for (var i=0; i<this.order.length; i++) {
         var char = this.order[i];
         var charID = char.getID();
 
-        if (char.isAlive()) {
+        // Turn
+        if (char.getHealth().isAlive()) {
           var turn = new CombatTurn(char, this.order);
           var turnResult = turn.make();
           if (turnResult) turnCounter +=1;
         }
+
       }
 
       if (!turnCounter) combatIsOver = true;
