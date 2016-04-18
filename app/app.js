@@ -6,10 +6,9 @@ import {GameEngine} from './js/engine/engine.js';
 
 // Views
 import {Navbar} from './js/views/navbar/navbar.jsx';
+import {Container} from './js/views/container.jsx';
 import {LeftPanel} from './js/views/leftpanel/leftpanel.jsx';
 
-// Execute
-render(<Navbar/>, document.getElementById('navbar'));
 
 
 
@@ -18,11 +17,11 @@ ge.start({"chars":chars});
 
 var hero = ge.getHero();
 
-// console.log(ge.private);
-// ge.log("GE Created!");
-// console.log(ge);
 
 
+// Render
+render(<Navbar/>, document.getElementById('navbar'));
+render(<Container hero={hero}/>, document.getElementById('container'));
 
-render(<LeftPanel hero={hero}/>, document.getElementById('leftpanel'));
+// render(<LeftPanel hero={hero}/>, document.getElementById('leftpanel'));
 

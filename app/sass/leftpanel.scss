@@ -1,5 +1,32 @@
+table.collapse.in {
+	display: table;
+}
+
 #left-panel {
+	width: 300px;
 	min-width: 300px;
+}
+
+#hero-basic {
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#hero-basic th, #hero-basic td  {
+	padding: 2px;
+	border: 0;
+}
+
+#hero-basic th {
+	text-align: right;
+	padding-right: 10px;
+}
+
+.panel-heading.sub-heading {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
 }
 
 .stats-group {
