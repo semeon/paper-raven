@@ -17,11 +17,11 @@ export class HeroPanel extends React.Component {
 
     return (
 
-			<div className="panel panel-default">
+			<div className="panel panel-default panel-hero">
 			  <div className="panel-heading">
 			  	<h5>{person.getName()} &nbsp; <i className={genderIconClass} aria-hidden="true"></i></h5>
 			  </div>
-			  <div className="panel-body" id="pbody">
+			  <div className="panel-body">
 			  	<BasicInfo hero={hero} />
 			  </div>
 			  <div className="panel-heading sub-heading text-lowercase" >

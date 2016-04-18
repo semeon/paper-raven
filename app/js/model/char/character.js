@@ -15,6 +15,7 @@ class Character {
 		this.person = new Person(p.person);
     this.special = new Special(p.special);
 
+
     this.skills = {};
     this.behaviour = {};
     this.equipment = {};
@@ -25,7 +26,9 @@ class Character {
     this.exp = new Experience(this);
 
     this.combatAbility = new CombatAbility(this);
-    // this.derived = new Derived(this);
+
+    this.location = {};
+    this.party = {};
 	}
 
   getID() {
@@ -50,6 +53,21 @@ class Character {
 
   getCombatAbility() { 
     return this.combatAbility; 
+  }
+
+  moveToLocation(l){
+    this.location = l;
+  }
+  getLocation() {
+    return this.location;
+  }
+
+  joinParty(p){
+    // if (p.getLocation().getID() == this.location.getID() ) {
+    //   this.party = p;
+    // } else {
+    //   console.error("CANNOT JOIN REMOTE PARTY");
+    // }
   }
 
 

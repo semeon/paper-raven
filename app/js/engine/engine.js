@@ -2,56 +2,62 @@ var Chance = require('chance');
 var chance = new Chance();
 
 
-import {dice} from './../model/dice/dice.js';
-import Character from './../model/char/character.js';
-import Combat from './combat/combat.js';
+import {dice} 		from './../model/dice/dice.js';
+import Location 	from './../model/location/location.js';
+import Party 			from './../model/party/party.js';
+import Character 	from './../model/char/character.js';
+
+import Combat 		from './combat/combat.js';
 
 export class GameEngine {
 
 	constructor(p) {
 		console.log("GameEngine instance created.");
-
 		this.hero = new Character(GenerateChar("hero", "Tannhauser"));
-  	// var charNaf = new Character(p.chars["Nafanail"]);
-  	// var charTan = new Character(p.chars["Tan"]);
-	}
 
-  log(m) {
-		console.log(m);
-  }
+		this.location = {};
+	}
 
   start(p) {
 
-  	this.hero.getExp().gainXP(1000);
+  	this.hero.getExp().gainXP(3000);
 
+  	var hopeTown = new Location("hope", "Hope");
+  	var raiders = new Party("raiders", "Raiders", "aggressive");
 		var charRan1 = new Character(GenerateChar("charRan1", chance.first()));
+		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
+
+
+		this.location = hopeTown;
+
+  	console.dir(hopeTown);
+
   	charRan1.getExp().gainXP(2000);
   	charRan1.print("a");
 
-		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
   	charRan2.getExp().gainXP(5000);
   	charRan2.print("a");
 
-		// var charRan3 = new Character(GenerateChar("charRan3", chance.first()));
-  	// charRan3.getExp().gainXP(10000);
-  	// charRan3.print("a");
+  	raiders.addMembers([charRan1, charRan2]);
+  	hopeTown.addParties([raiders]);
+
+  	console.dir(hopeTown);
 
 
   	var combat = new Combat([this.hero, charRan1, charRan2]);
-  	// var combat = new Combat([this.hero, charRan1, charRan2, charRan3]);
+  	// combat.start();
 
 
-  	// combat.set([charRan1, charRan2, charRan3]);
-  	combat.start();
 
-		// TestDice(dice);
-		// PrintAttack(hero);
   }
 
   getHero() {
   	return this.hero;
   }
 
+  getLocation() {
+  	return this.location;
+  }
 
 }
 

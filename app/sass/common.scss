@@ -1,0 +1,24 @@
+table.collapse.in {
+	display: table;
+}
+
+.table-borderless>thead>tr>th, .table-borderless>thead>tr>td, 
+.table-borderless>tfoot>tr>th, .table-borderless>tfoot>tr>td, 
+.table-borderless>tbody>tr>th, .table-borderless>tbody>tr>td  {
+	border: 0;
+}
+
+.no-padding {
+	padding: 0px;
+}
+
+.table-condensed {
+    margin-bottom: 0px;
+}
+
+.panel-heading.sub-heading {
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-right-radius: 0px;
+  border-top-left-radius: 0px;
+}

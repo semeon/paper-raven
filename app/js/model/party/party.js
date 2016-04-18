@@ -1,13 +1,34 @@
 class Party {
 
-  constructor(p) {
-    this.name = p;
-    this.parties = {};
-    this.loot = {}; // Containers
+  constructor(id, name, beh) {
+    this._id = id;
+    this.name = name;
+    this.behaviour = beh;
+    this.members = {};
+    this.location = {};
   }
 
-  add() {
-  	
+
+  getID() {
+    return this._id;
+  }
+
+  addMembers(members) {
+  	if (members) {
+  		for (var i = 0; i < members.length; i++) {
+  			var m = members[i];
+  			m.joinParty(this);
+  			this.members[m.getID()] = m;
+  		}
+  	}
+  }
+
+  getLocation() {
+  	return this.location;
+  }
+
+  assignLocation(l) {
+  	this.location = l;
   }
 
 }

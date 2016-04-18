@@ -14,14 +14,7 @@ export class CombatStats extends React.Component {
   	var DT = cmbt.getDT();
 
     return (
-	  	<table className="table table-condensed collapse in" id="combat-stats">
-	  		<thead>
-		  		<tr>
-		  			<th colSpan="2">Attack</th>
-		  			<th></th>
-		  			<th colSpan="2">Defense</th>
-		  		</tr>
-	  		</thead>
+	  	<table className="table table-condensed small collapse in" id="combat-stats">
 	  		<tbody>
 		  		<tr>
 		  			<td>Damage</td>

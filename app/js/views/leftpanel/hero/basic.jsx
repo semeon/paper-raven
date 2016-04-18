@@ -19,20 +19,19 @@ export class BasicInfo extends React.Component {
   	var level = exp.getLevel();
   	var xp = exp.getXP() + "/" + exp.getNextLevelXP();
 
-
     return (
-					<div className="row container-fluid" id="hero-basic">
-					  <div className="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-					  	<img src="res/hero.png" alt={person.getName()} className="img-circle" width="100%" height="100%"/>
+					<div className="row container-fluid hero-basic">
+					  <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+					  	<img src="res/hero.png" alt={person.getName()} className="img-rounded" width="100%" height="100%"/>
 					  </div>
-					  <div className="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-					  	<table className="table table-condensed">
+					  <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+					  	<table className="table table-condensed small table-borderless">
 					  		<tbody>
 						  		<tr>
 						  			<th>HP</th><td>{hp}</td>
 						  		</tr>
 						  		<tr>
-						  			<th>Level</th><td>{level}</td>
+						  			<th>Lvl</th><td>{level}</td>
 						  		</tr>
 						  		<tr>
 						  			<th>XP</th><td>{xp}</td>
