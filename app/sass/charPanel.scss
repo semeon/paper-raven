@@ -9,14 +9,29 @@
 	padding-bottom: 0px;
 }
 
+.panel-char .panel-heading h5{
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+
+.panel-char .panel-heading.sub-heading {
+	border-bottom-width: 0px;
+}
+
 .panel-char .panel-body {
 	padding-top: 10px;
 	padding-bottom: 10px;
 }
 
+/*
+.panel-char table.in {
+	border-top-width: 1px;
+	border-top-style: solid;
+}
+*/
 .char-basic>div>table>tbody>tr>th, 
 .char-basic>div>table>tbody>tr>td  {
-	padding: 4px;
+	padding: 3px;
 }
 
 .char-basic th {

@@ -37,8 +37,13 @@ module.exports = {
         loader: "file?name=[name].[ext]",
       },   
       {
-          test: /\.scss$/,
-          loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
+        test: /\.png$/,
+        include: PATHS.app,        
+        loader: "file?name=[path][name].[ext]&context=./app",
+      }, 
+      {
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader!sass-loader")
       }      
     ]
   },  

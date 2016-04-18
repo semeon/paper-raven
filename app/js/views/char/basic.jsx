@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import image from "./../../../res/graham.png";
+
 export class BasicInfo extends React.Component {
 
   render () {
@@ -20,7 +22,7 @@ export class BasicInfo extends React.Component {
   	var xp = exp.getXP() + "/" + exp.getNextLevelXP();
 
     return (
-					<div className="row container-fluid hero-basic">
+					<div className="row container-fluid char-basic">
 					  <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
 					  	<img src="res/graham.png" alt={person.getName()} className="img-rounded" width="100%" height="100%"/>
 					  </div>

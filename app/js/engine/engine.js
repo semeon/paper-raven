@@ -28,6 +28,8 @@ export class GameEngine {
 		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
 		var charRan3 = new Character(GenerateChar("charRan3", chance.first()));
 
+		var party = GenerateParty("p1", 10);
+
 
 		this.location = hopeTown;
 
@@ -42,9 +44,8 @@ export class GameEngine {
   	charRan3.getExp().gainXP(10000);
   	charRan3.print("a");
 
-
   	raiders.addMembers([charRan1, charRan2, charRan3]);
-  	hopeTown.addParties([raiders]);
+  	hopeTown.addParties([raiders, party]);
 
   	console.dir(hopeTown);
 
@@ -68,6 +69,26 @@ export class GameEngine {
 
 // ********************************************
 
+function GenerateParty(pid, n) {
+
+	var party = new Party(pid, chance.radio(), "aggressive");
+	// var party = new Party(pid, chance.street(), "aggressive");
+
+	var mems = [];
+
+	for (var i = 0; i < n; i++) {
+		var id = "random" + i;
+		var char = new Character(GenerateChar(id, chance.first()));
+		mems.push(char);
+	}
+
+	party.addMembers(mems);
+
+	console.log("PARTY GENERATED");
+	console.dir(party);
+
+	return party;
+}
 
 
 function GenerateChar(id, name) {
