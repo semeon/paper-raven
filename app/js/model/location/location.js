@@ -16,7 +16,10 @@ class Location {
     return this.name;
   }
 
-
+  getParties() {
+    return this.parties;
+  }
+  
   addParties(parties) {
   	if (parties) {
   		for (var i = 0; i < parties.length; i++) {

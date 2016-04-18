@@ -5,8 +5,8 @@ export class CombatStats extends React.Component {
 
   render () {
 
-  	var hero = this.props.hero;
-  	var cmbt = hero.getCombatAbility();
+  	var char = this.props.char;
+  	var cmbt = char.getCombatAbility();
   	var dmg = cmbt.getDamageRange();
   	var critChance = cmbt.getCritChance();
   	var critHit = cmbt.getCritMultipier();
@@ -14,7 +14,7 @@ export class CombatStats extends React.Component {
   	var DT = cmbt.getDT();
 
     return (
-	  	<table className="table table-condensed small collapse in" id="combat-stats">
+	  	<table className="table table-condensed small collapse" id={this.props.nodeId}>
 	  		<tbody>
 		  		<tr>
 		  			<td>Damage</td>

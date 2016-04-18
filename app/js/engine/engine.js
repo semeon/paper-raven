@@ -26,6 +26,7 @@ export class GameEngine {
   	var raiders = new Party("raiders", "Raiders", "aggressive");
 		var charRan1 = new Character(GenerateChar("charRan1", chance.first()));
 		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
+		var charRan3 = new Character(GenerateChar("charRan3", chance.first()));
 
 
 		this.location = hopeTown;
@@ -38,7 +39,11 @@ export class GameEngine {
   	charRan2.getExp().gainXP(5000);
   	charRan2.print("a");
 
-  	raiders.addMembers([charRan1, charRan2]);
+  	charRan3.getExp().gainXP(10000);
+  	charRan3.print("a");
+
+
+  	raiders.addMembers([charRan1, charRan2, charRan3]);
   	hopeTown.addParties([raiders]);
 
   	console.dir(hopeTown);

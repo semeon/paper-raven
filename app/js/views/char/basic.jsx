@@ -5,7 +5,7 @@ export class BasicInfo extends React.Component {
 
   render () {
 
-  	var hero = this.props.hero;
+  	var hero = this.props.char;
   	var person = hero.getPerson();
   	var health = hero.getHealth();
   	var exp = hero.getExp();
@@ -22,7 +22,7 @@ export class BasicInfo extends React.Component {
     return (
 					<div className="row container-fluid hero-basic">
 					  <div className="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-					  	<img src="res/hero.png" alt={person.getName()} className="img-rounded" width="100%" height="100%"/>
+					  	<img src="res/graham.png" alt={person.getName()} className="img-rounded" width="100%" height="100%"/>
 					  </div>
 					  <div className="col-xs-8 col-sm-8 col-md-8 col-lg-8">
 					  	<table className="table table-condensed small table-borderless">

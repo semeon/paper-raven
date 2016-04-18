@@ -23,6 +23,10 @@ class Party {
   	}
   }
 
+  getMembers() {
+    return this.members;
+  }
+
   getLocation() {
   	return this.location;
   }

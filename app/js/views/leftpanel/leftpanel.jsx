@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {HeroPanel} from './hero/hero.jsx';
+import {CharPanel} from './../char/charPanel.jsx';
 
 export class LeftPanel extends React.Component {
   render() {
@@ -9,7 +9,7 @@ export class LeftPanel extends React.Component {
     return (
 
 			  <div className="pull-left" id="left-panel">
-			  	<HeroPanel hero={this.props.hero} />
+			  	<CharPanel char={this.props.hero} />
 			  </div>
     );
   }
