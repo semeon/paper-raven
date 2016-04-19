@@ -29,7 +29,7 @@ export class CharPanel extends React.Component {
 			  <div className="panel-body">
 			  	<BasicInfo char={char} />
 			  </div>
-			  <div className="panel-heading sub-heading text-lowercase" >
+			  <div className="panel-heading sub-heading text-capitalize" >
 			  	Combat Stats [<a className="text-capitalize" 
 							data-toggle="collapse" 
 							href={href} 
