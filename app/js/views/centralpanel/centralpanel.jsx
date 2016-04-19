@@ -8,7 +8,7 @@ export class CentralPanel extends React.Component {
 
     return (
 
-			  <div className="pull-left" id="central-panel">
+			  <div className="ui segment" id="central-panel">
 			  	<LocationPanel location={this.props.location} />
 			  </div>
     );

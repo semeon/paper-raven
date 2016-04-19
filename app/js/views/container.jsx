@@ -14,7 +14,6 @@ export class Container extends React.Component {
 		console.log("Container view");
     return (
 			<div>
-		  	<LeftPanel hero={this.props.hero} />
 		  	<CentralPanel location={this.props.location} hero={this.props.hero} />
 			</div>
     );

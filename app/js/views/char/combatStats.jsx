@@ -14,31 +14,36 @@ export class CombatStats extends React.Component {
   	var DT = cmbt.getDT();
 
     return (
-	  	<table className="table table-condensed small collapse" id={this.props.nodeId}>
+	  	<table className="ui very compact small table combat-stats" id={this.props.nodeId}>
+			  <thead>
+			    <tr>
+			      <th colSpan="5">Combat Stats</th>
+			    </tr>
+			  </thead>
 	  		<tbody>
 		  		<tr>
 		  			<td>Damage</td>
-		  			<td><span className="badge center-block">{dmg.min} - {dmg.max}</span></td>
+		  			<td><div className="ui small label">{dmg.min} - {dmg.max}</div></td>
 
 		  			<td> </td>
 
 		  			<td>Dodge %</td>
-		  			<td><span className="badge center-block">{dodgeChance}%</span></td>
+		  			<td><div className="ui small label">{dodgeChance}%</div></td>
 		  		</tr>
 
 		  		<tr>
 		  			<td>Crit %</td>
-		  			<td><span className="badge center-block">{critChance}%</span></td>
+		  			<td><div className="ui small label">{critChance}%</div></td>
 
 		  			<td> </td>
 
 		  			<td>DT</td>
-		  			<td><span className="badge center-block">{DT}</span></td>
+		  			<td><div className="ui small label">{DT}</div></td>
 		  		</tr>
 
 		  		<tr>
 		  			<td>Crit Hit</td>
-		  			<td><span className="badge center-block">x{critHit}</span></td>
+		  			<td><div className="ui small label">x{critHit}</div></td>
 
 		  			<td> </td>
 

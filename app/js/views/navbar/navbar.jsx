@@ -4,32 +4,29 @@ import {render} from 'react-dom';
 export class Navbar extends React.Component {
   render () {
     return (
-			<nav className="navbar navbar-default navbar-static-top">
-			  <div className="container-fluid">
-			    <div className="navbar-header">
-			      <button type="button" 
-			      			className="navbar-toggle collapsed" 
-			      			data-toggle="collapse" 
-			      			data-target="#bs-example-navbar-collapse-1" 
-			      			aria-expanded="false">
-			        <span className="sr-only">Toggle navigation</span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			        <span className="icon-bar"></span>
-			      </button>
-			      <a className="navbar-brand" href="#">Paper Raven</a>
-			    </div>
-
-			    <div className="collapse navbar-collapse" 
-			    			id="bs-example-navbar-collapse-1">
-			      <ul className="nav navbar-nav">
-			        <li className="active"><a href="#">Link <span className="sr-only">(current)</span></a></li>
-			        <li><a href="#">Link</a></li>
-			      </ul>
-			    </div>
-
-			  </div>
-			</nav>
+		  <div className="ui container">
+		    <a className="item">
+		      <i className="home icon"></i> Home
+		    </a>
+		    <a className="item">
+		      <i className="grid layout icon"></i> Browse
+		    </a>
+		    <a className="item">
+		      <i className="mail icon"></i> Messages
+		    </a>
+		    <div className="ui simple dropdown item">
+		      More
+		      <i className="dropdown icon"></i>
+		      <div className="menu">
+		        <a className="item"><i className="edit icon"></i> Edit Profile</a>
+		        <a className="item"><i className="globe icon"></i> Choose Language</a>
+		        <a className="item"><i className="settings icon"></i> Account Settings</a>
+		      </div>
+		    </div>
+		    <div className="right item">
+		      <div className="ui input"><input type="text" placeholder="Search..."></input></div>
+		    </div>
+		  </div>
     );
   }
 }

@@ -1,43 +1,23 @@
-
-.panel-char {
-	max-width: 230px;
-	margin-right: 5px;
+/* combat stats */
+.card.char > table.combat-stats {
+	border-radius: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	margin: 0px;
 }
 
-.panel-char .panel-heading {
-	padding-top: 2px;
-	padding-bottom: 0px;
+.card.char > table.combat-stats th{
+	padding-top: 4px;
+	padding-bottom: 4px;
+}
+.card.char > table.combat-stats td{
+	padding: 2px;
 }
 
-.panel-char .panel-heading h5{
-	margin-top: 3px;
-	margin-bottom: 3px;
-}
-
-.panel-char .panel-heading.sub-heading {
-	border-bottom-width: 0px;
-}
-
-.panel-char .panel-body {
-	padding-top: 10px;
-	padding-bottom: 10px;
-}
-
-/*
-.panel-char table.in {
-	border-top-width: 1px;
-	border-top-style: solid;
-}
-*/
-.char-basic>div>table>tbody>tr>th, 
-.char-basic>div>table>tbody>tr>td  {
+.card.char > table.combat-stats td .label{
 	padding: 3px;
+	width: 100%;
+	text-align: center;
 }
-
-.char-basic th {
-	padding-right: 10px;
-	padding-left: 10px;
-}
-
-
 

@@ -7,10 +7,11 @@ export class LeftPanel extends React.Component {
   render() {
 
     return (
-
-			  <div className="pull-left" id="left-panel">
-			  	<CharPanel char={this.props.hero} />
-			  </div>
+		  <div className="ui segment">
+		  	<div className="ui cards">
+		  		<CharPanel char={this.props.hero} />
+		  	</div>
+		  </div>
     );
   }
 }
