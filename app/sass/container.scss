@@ -1,11 +1,17 @@
+#main-grid {
+	min-width: 1000px;
+}
+
 #left-panel {
-	width: 250px;
+	min-width: 280px;
 	padding-top: 25px;
+	margin-left: 10px;
 }
 
 
 #central-panel {
 	padding-top: 25px;
+	min-width: 700px;
 }
 
 /*

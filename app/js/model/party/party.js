@@ -27,6 +27,10 @@ class Party {
     return this.members;
   }
 
+  getName() {
+    return this.name;
+  }
+
   getLocation() {
   	return this.location;
   }

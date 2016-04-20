@@ -15,6 +15,8 @@ export class GameEngine {
 		console.log("GameEngine instance created.");
 		this.hero = new Character(GenerateChar("hero", "Tannhauser"));
 
+		this.payersParty = new Party("heroParty", "The Party", "neutral");
+
 		this.location = {};
 	}
 
@@ -22,18 +24,13 @@ export class GameEngine {
 
   	this.hero.getExp().gainXP(3000);
 
-  	var hopeTown = new Location("hope", "Hope");
-  	var raiders = new Party("raiders", "Raiders", "aggressive");
+		var raiders = GenerateParty("raiders", 10, "Raiders");
+		var junkies = GenerateParty("p1", 10, "Junkies");
+
+
 		var charRan1 = new Character(GenerateChar("charRan1", chance.first()));
 		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
-		var charRan3 = new Character(GenerateChar("charRan3", chance.first()));
 
-		var party = GenerateParty("p1", 10);
-
-
-		this.location = hopeTown;
-
-  	console.dir(hopeTown);
 
   	charRan1.getExp().gainXP(2000);
   	charRan1.print("a");
@@ -41,11 +38,11 @@ export class GameEngine {
   	charRan2.getExp().gainXP(5000);
   	charRan2.print("a");
 
-  	charRan3.getExp().gainXP(10000);
-  	charRan3.print("a");
+  	this.payersParty.addMembers([charRan1, charRan2]);
 
-  	raiders.addMembers([charRan1, charRan2, charRan3]);
-  	hopeTown.addParties([raiders, party]);
+  	var hopeTown = new Location("hope", "Hope");
+		this.location = hopeTown;
+  	hopeTown.addParties([raiders, junkies, this.payersParty]);
 
   	console.dir(hopeTown);
 
@@ -61,6 +58,10 @@ export class GameEngine {
   	return this.hero;
   }
 
+  getParty() {
+  	return this.payersParty;
+  }
+
   getLocation() {
   	return this.location;
   }
@@ -69,9 +70,12 @@ export class GameEngine {
 
 // ********************************************
 
-function GenerateParty(pid, n) {
+function GenerateParty(pid, n, title) {
 
-	var party = new Party(pid, chance.radio(), "aggressive");
+	var name = title;
+	if (!name) name = chance.radio();
+
+	var party = new Party(pid, name, "aggressive");
 	// var party = new Party(pid, chance.street(), "aggressive");
 
 	var mems = [];

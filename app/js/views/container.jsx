@@ -6,7 +6,7 @@ import {CentralPanel} from 	'./centralpanel/centralpanel.jsx';
 
 import './../../sass/common.scss';
 import './../../sass/container.scss';
-import './../../sass/charPanel.scss';
+import './../../sass/charCard.scss';
 
 export class Container extends React.Component {
 

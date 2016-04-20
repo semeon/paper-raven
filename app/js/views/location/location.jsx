@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {CharPanel} from './../char/charPanel.jsx';
+import {CharCard} from './../char/charCard.jsx';
 
 
 export class LocationPanel extends React.Component {
@@ -19,7 +19,7 @@ export class LocationPanel extends React.Component {
 			var p = parties[party];
 			for (var mem in p.getMembers()) {
 				var m = p.getMembers()[mem];
-		  	charRows.push(<CharPanel charId={mem} char={m} />);
+		  	charRows.push(<CharCard charId={mem} char={m} />);
 			}
 		}
 
@@ -34,10 +34,7 @@ export class LocationPanel extends React.Component {
 			  <div className="panel-body">
 			  	BODY
 			  </div>
-			  <div className="panel-heading sub-heading text-lowercase" >
-			  	PEOPLE
-			  </div>
-			  <div className="panel-body">
+			  <div className="ui cards" >
 			  	{charRows}
 			  </div>
 			  <div className="panel-footer">

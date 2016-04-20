@@ -1,0 +1,49 @@
+.ui.cards .card.char {
+	width: 222px;
+}
+
+.ui.cards .card.char .content {
+	padding: 0.5em;
+}
+
+.card.char .label {
+	padding: 3px;
+}
+
+.card.char .label.overflow {
+	position: absolute;
+}
+.card.char .label.overflow.bottom {
+	bottom: 4px;
+}
+.card.char .label.overflow.right {
+	right: 4px;
+}
+
+
+
+
+/* combat stats */
+.card.char > .combat-stats .ui.segment.header {
+	padding: 5px;
+}
+
+.card.char > .combat-stats {
+	border-radius: 0px;
+	border-left: 0px;
+	border-right: 0px;
+	border-bottom: 0px;
+	margin: 0px;
+}
+.card.char > .combat-stats div.row{
+	padding: 0px;
+}
+.card.char > .combat-stats div.column{
+	padding: 3px;
+	paddingleft: 10px;
+	font-size: 12px;
+}
+.card.char .label.wide {
+	width: 100%;
+	text-align: center;
+}

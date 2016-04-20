@@ -17,16 +17,16 @@ var ge = new GameEngine();
 ge.start({"chars":chars});
 
 var hero = ge.getHero();
+var party = ge.getParty();
 var location = ge.getLocation();
 
 
 
 // Render
 render(<Navbar/>, document.getElementById('navbar'));
-// render(<Container hero={hero} location={location}  />, document.getElementById('container'));
 
-render(<LeftPanel hero={hero} location={location}  />, document.getElementById('left-panel'));
-render(<CentralPanel hero={hero} location={location}  />, document.getElementById('container'));
+render(<LeftPanel party={party} hero={hero} location={location}  />, document.getElementById('left-panel'));
+render(<CentralPanel hero={hero} location={location}  />, document.getElementById('central-panel'));
 
 
 
