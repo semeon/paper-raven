@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import {appSettings} from './../../../settings.js';
+
 import {CombatStats} from './combatStats.jsx';
 
 export class CharCard extends React.Component {
@@ -9,11 +11,15 @@ export class CharCard extends React.Component {
 
   	var char = this.props.char;
   	var person = char.getPerson();
+
   	var health = char.getHealth();
   	var exp = char.getExp();
   	var hp = health.getHP() + "/" + health.getMaxHP();
   	var level = exp.getLevel();
   	var xp = exp.getXP() + "/" + exp.getNextLevelXP();
+
+    var img = person.getImageFileName();
+    var imgFullPath = appSettings.charImagePath + person.getImageFileName();
 
 
   	var genderIconClass = "fa fa-male";
@@ -29,7 +35,7 @@ export class CharCard extends React.Component {
       <div className="card char">
         <div className="image">
         	<div className="ui overflow bottom right label"><i className="fa fa-heartbeat" aria-hidden="true"></i> {hp}</div>
-        	<img src="res/graham.png" alt={person.getName()} />
+        	<img src={imgFullPath} alt={person.getName()} />
         </div>
 
         <div className="content">

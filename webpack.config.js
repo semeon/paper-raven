@@ -6,6 +6,8 @@ const PATHS = {
 };
 
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+
 
 module.exports = {
   // Entry accepts a path or an object of entries. We'll be using the
@@ -38,7 +40,7 @@ module.exports = {
       },   
       {
         test: /\.png$/,
-        include: PATHS.app,        
+        include: PATHS.app,
         loader: "file?name=[path][name].[ext]&context=./app",
       }, 
       {
@@ -49,10 +51,19 @@ module.exports = {
   },  
   plugins: [
     new ExtractTextPlugin('styles.css'),
-  ]
-  // resolve: {
-  //   extensions: ['', '.sass'],
-  //   root: [path.join(__dirname, './app/sass')]
-  // }
+
+    new CopyWebpackPlugin([
+      { 
+        from: PATHS.app + '/res', 
+        to: PATHS.build + '/res' 
+      }
+    ]),
+
+  ],
+  resolve: {
+    root: path.resolve(__dirname, './app'),
+    //   extensions: ['', '.sass'],
+    //   root: [path.join(__dirname, './app/sass')]
+  }
 
 };

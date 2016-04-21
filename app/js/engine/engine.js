@@ -13,7 +13,7 @@ export class GameEngine {
 
 	constructor(p) {
 		console.log("GameEngine instance created.");
-		this.hero = new Character(GenerateChar("hero", "Tannhauser"));
+		this.hero = new Character(GenerateChar("hero", "Tannhauser", "graham.png"));
 
 		this.payersParty = new Party("heroParty", "The Party", "neutral");
 
@@ -24,12 +24,12 @@ export class GameEngine {
 
   	this.hero.getExp().gainXP(3000);
 
-		var raiders = GenerateParty("raiders", 10, "Raiders");
-		var junkies = GenerateParty("p1", 10, "Junkies");
+		var raiders = GenerateParty("raiders", 3, "Raiders");
+		var junkies = GenerateParty("p1", 3, "Junkies", "sticky_max.png");
 
 
-		var charRan1 = new Character(GenerateChar("charRan1", chance.first()));
-		var charRan2 = new Character(GenerateChar("charRan2", chance.first()));
+		var charRan1 = new Character(GenerateChar("charRan1", chance.first(), "crazy_wrench.png"));
+		var charRan2 = new Character(GenerateChar("charRan2", chance.first(), "crazy_wrench.png"));
 
 
   	charRan1.getExp().gainXP(2000);
@@ -70,7 +70,7 @@ export class GameEngine {
 
 // ********************************************
 
-function GenerateParty(pid, n, title) {
+function GenerateParty(pid, n, title, image) {
 
 	var name = title;
 	if (!name) name = chance.radio();
@@ -82,7 +82,7 @@ function GenerateParty(pid, n, title) {
 
 	for (var i = 0; i < n; i++) {
 		var id = "random" + i;
-		var char = new Character(GenerateChar(id, chance.first()));
+		var char = new Character(GenerateChar(id, chance.first(), image));
 		mems.push(char);
 	}
 
@@ -95,7 +95,7 @@ function GenerateParty(pid, n, title) {
 }
 
 
-function GenerateChar(id, name) {
+function GenerateChar(id, name, image) {
 
 	var char = {};
 	char.id = id;
@@ -103,6 +103,8 @@ function GenerateChar(id, name) {
 	char.person.name = name;
 	char.person.gender = "male";
 	if(dice.rollBool(50)) char.person.gender = "female";
+
+	if(image) char.person.image = image;
 
 	char.special = {};
 	char.special["S"] = dice.rollD10().value;
