@@ -13,7 +13,6 @@ import {Container} from './js/views/container.jsx';
 import {LeftPanel} from 		'./js/views/leftpanel/leftpanel.jsx';
 import {CentralPanel} from 	'./js/views/centralpanel/centralpanel.jsx';
 
-
 var ge = new GameEngine();
 ge.start({"chars":chars});
 
