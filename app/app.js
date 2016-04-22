@@ -20,8 +20,6 @@ var hero = ge.getHero();
 var party = ge.getParty();
 var location = ge.getLocation();
 
-
-
 // Render
 render(<Navbar/>, document.getElementById('navbar'));
 

@@ -53,11 +53,18 @@ module.exports = {
     new ExtractTextPlugin('styles.css'),
 
     new CopyWebpackPlugin([
-      { 
-        from: PATHS.app + '/res', 
-        to: PATHS.build + '/res' 
+        { 
+          from: PATHS.app + '/res', 
+          to: PATHS.build + '/res' 
+        }
+      ],
+      {
+        ignore: [
+                '*.DS_Store'
+              ],
+        copyUnmodified: true
       }
-    ]),
+    ),
 
   ],
   resolve: {

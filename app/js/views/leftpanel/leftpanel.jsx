@@ -8,9 +8,7 @@ export class LeftPanel extends React.Component {
 
   	var partyName = this.props.party.getName();
   	var characters = this.props.party.getMembers();
-
   	var charCards = [];
-
 		for (var c in characters) {
 			var char = characters[c];
 	  	charCards.push(<CharCard char={char} />);
@@ -28,7 +26,6 @@ export class LeftPanel extends React.Component {
 
 				<div className="ui segment">
 			  	<div className="ui cards">
-			  		<CharCard char={this.props.hero} />
 			  		{charCards}
 			  	</div>
 				</div>		  

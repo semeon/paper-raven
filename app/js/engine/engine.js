@@ -38,7 +38,7 @@ export class GameEngine {
   	charRan2.getExp().gainXP(5000);
   	charRan2.print("a");
 
-  	this.payersParty.addMembers([charRan1, charRan2]);
+  	this.payersParty.addMembers([this.hero, charRan1, charRan2]);
 
   	var hopeTown = new Location("hope", "Hope");
 		this.location = hopeTown;

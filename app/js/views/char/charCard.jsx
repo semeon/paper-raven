@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {appSettings} from './../../../settings.js';
+import {appSettings} from 'settings.js';
 
 import {CombatStats} from './combatStats.jsx';
 
@@ -19,7 +19,7 @@ export class CharCard extends React.Component {
   	var xp = exp.getXP() + "/" + exp.getNextLevelXP();
 
     var img = person.getImageFileName();
-    var imgFullPath = appSettings.charImagePath + person.getImageFileName();
+    var imgFullPath = appSettings.character.imagePath + person.getImageFileName();
 
 
   	var genderIconClass = "fa fa-male";

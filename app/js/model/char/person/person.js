@@ -1,9 +1,11 @@
+import {appSettings} from 'settings.js';
+
 class Person {
 
   constructor(p) {
 		this.name = p.name;
 		this.gender = p.gender;
-    this.image = 'default.png';
+    this.image = appSettings.character.defImage;
     if (p.image) this.image = p.image;
   }
 
