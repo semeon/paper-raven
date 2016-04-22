@@ -8,11 +8,26 @@ export class LeftPanel extends React.Component {
 
   	var partyName = this.props.party.getName();
   	var characters = this.props.party.getMembers();
+  	
   	var charCards = [];
+
 		for (var c in characters) {
 			var char = characters[c];
-	  	charCards.push(<CharCard char={char} />);
+ 	 		charCards.push(<CharCard key={c} char={char} />);
 		}
+
+		// var cahrCards = characters.map(function(char) {
+		// 				return <CharCard key={char.id} char={char} />
+		// 			});
+
+
+
+
+		// TODO
+		// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
+    // {this.props.results.map(function(result) {
+    //    return <ListItemWrapper key={result.id} data={result}/>;
+
 
 
     return (

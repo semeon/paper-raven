@@ -23,7 +23,7 @@ var location = ge.getLocation();
 // Render
 render(<Navbar/>, document.getElementById('navbar'));
 
-render(<LeftPanel party={party} hero={hero} location={location}  />, document.getElementById('left-panel'));
+render(<LeftPanel party={party} location={location}  />, document.getElementById('left-panel'));
 render(<CentralPanel hero={hero} location={location}  />, document.getElementById('central-panel'));
 
 

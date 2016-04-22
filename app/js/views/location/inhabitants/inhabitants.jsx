@@ -15,23 +15,23 @@ export class InhabitantsView extends React.Component {
   	var partyRows = [];
 
 
-		for (var party in parties) {
-			var p = parties[party];
+		for (var p in parties) {
+			var party = parties[p];
 
 			var pr = (
-				<div className="ui secondary segment header">
-					<h5>{p.getName()}</h5>
+				<div key={"name_"+p} className="ui secondary segment header">
+					<h5>{party.getName()}</h5>
 				</div>		  
 			);
 
 			var charRows = [];
-			for (var m in p.getMembers()) {
-				var member = p.getMembers()[m];
-		  	charRows.push(<CharCard charId={m} char={member} />);
+			for (var m in party.getMembers()) {
+				var member = party.getMembers()[m];
+		  	charRows.push(<CharCard key={m} char={member} />);
 			}
 
 	  	var cGroup = (
-				<div className="ui segment red">
+				<div key={"group_"+p} className="ui segment red">
 					<div className="ui attached cards">
 					  	{charRows}
 					</div>
