@@ -32,7 +32,7 @@ export class CharCard extends React.Component {
   	var href = "#" + combatStatsNodeId;
 
     return (
-      <div className="card char">
+      <div className="ui card char">
         <div className="image">
         	<div className="ui overflow bottom right label"><i className="fa fa-heartbeat" aria-hidden="true"></i> {hp}</div>
         	<img src={imgFullPath} alt={person.getName()} />

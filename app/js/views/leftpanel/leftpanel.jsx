@@ -1,7 +1,7 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {CharCard} from './../char/charCard.jsx';
+import {CharCard} from 'js/views/char/charCard.jsx';
 
 export class LeftPanel extends React.Component {
   render() {

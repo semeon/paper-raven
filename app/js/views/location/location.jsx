@@ -17,6 +17,8 @@ export class LocationPanel extends React.Component {
 
 		for (var party in parties) {
 			var p = parties[party];
+
+
 			for (var mem in p.getMembers()) {
 				var m = p.getMembers()[mem];
 		  	charRows.push(<CharCard charId={mem} char={m} />);
@@ -29,13 +31,12 @@ export class LocationPanel extends React.Component {
     return (
 			<div className="panel panel-default">
 			  <div className="panel-heading">
-			  	<h5><i className="fa fa-map-signs" aria-hidden="true"></i> {locationName}</h5>
+			  	Raiders
 			  </div>
 			  <div className="panel-body">
-			  	BODY
-			  </div>
-			  <div className="ui cards" >
-			  	{charRows}
+				  <div className="ui cards" >
+				  	{charRows}
+				  </div>
 			  </div>
 			  <div className="panel-footer">
 			  	Panel footer
