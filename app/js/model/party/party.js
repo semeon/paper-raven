@@ -27,6 +27,14 @@ class Party {
     return this.members;
   }
 
+  getMembersArray() {
+    var result = [];
+    for (var m in this.members) {
+      result.push(this.members[m]);
+    }
+    return result;
+  }
+
   getName() {
     return this.name;
   }

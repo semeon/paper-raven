@@ -22,9 +22,6 @@ charGen.GenerateParty = function(pid, n, title, image) {
 
 	party.addMembers(mems);
 
-	console.log("PARTY GENERATED");
-	console.dir(party);
-
 	return party;
 }
 

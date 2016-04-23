@@ -2,20 +2,40 @@ import CombatTurn from './combatturn.js';
 
 class Combat {
 
-  constructor(p) {
-    this.order = p;
-    this.order.sort(function(a, b){return b.getCombatAbility().getInitiative() - a.getCombatAbility().getInitiative()});
+  constructor(combatParties) {
 
-    this.actors = {};
-    for (var i=0; i<this.order.length; i++) {
-      var key = this.order[i].getID();
-      this.actors[key] = this.order[i]; 
-    }
-
+    this.parties = combatParties;
+    this.combatants = [];
+    this.set();
+    // this.order = p;
+    // this.order.sort(function(a, b){return b.getCombatAbility().getInitiative() - a.getCombatAbility().getInitiative()});
+    // this.actors = {};
+    // for (var i=0; i<this.order.length; i++) {
+    //   var key = this.order[i].getID();
+    //   this.actors[key] = this.order[i]; 
+    // }
     // this.printOrder();
   }
 
+
+
+
   set(p) {
+
+    for (var i = 0; i < this.parties.length; i++) {
+      var partyMembers = this.parties[i].getMembersArray();
+
+      this.combatants = this.combatants.concat(partyMembers);
+    }    
+
+    console.dir("Parties:");
+    console.dir(this.parties);
+
+    console.dir("Combatants:");
+    console.dir(this.combatants);
+
+    console.dir("---------");
+
   }
 
   start(p) {

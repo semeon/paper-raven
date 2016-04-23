@@ -16,19 +16,6 @@ export class LeftPanel extends React.Component {
  	 		charCards.push(<CharCard key={c} char={char} />);
 		}
 
-		// var cahrCards = characters.map(function(char) {
-		// 				return <CharCard key={char.id} char={char} />
-		// 			});
-
-
-
-
-		// TODO
-		// http://facebook.github.io/react/docs/multiple-components.html#dynamic-children
-    // {this.props.results.map(function(result) {
-    //    return <ListItemWrapper key={result.id} data={result}/>;
-
-
 
     return (
 		  <div className="ui segments">

@@ -19,6 +19,15 @@ class Location {
   getParties() {
     return this.parties;
   }
+
+
+  getPartiesArray() {
+    var result = [];
+    for (var p in this.parties) {
+      result.push(this.parties[p]);
+    }
+    return result;
+  }
   
   addParties(parties) {
   	if (parties) {

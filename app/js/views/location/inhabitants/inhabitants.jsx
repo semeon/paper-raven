@@ -42,9 +42,6 @@ export class InhabitantsView extends React.Component {
 			partyRows.push(cGroup);
 		}
 
-
-		console.dir(charRows);
-
     return (
 			<div className="ui segments">
 				{partyRows}
