@@ -47,17 +47,10 @@ export class CharCard extends React.Component {
           </div>
         </div>
 
-      	<CombatStats char={char} nodeId={combatStatsNodeId}/>
 
-        <div className="extra content">
-          <span className="right floated">
-          	<i className="fa fa-cog" aria-hidden="true"></i> Settings
-          </span>
-          <span>
-            <i className="fa fa-exclamation-triangle" aria-hidden="true"></i> Warning!
-          </span>
-        </div>
+
       </div>
     );
   }
 }
+      	// <CombatStats char={char} nodeId={combatStatsNodeId}/>
