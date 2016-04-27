@@ -27,7 +27,7 @@ export class LeftPanel extends React.Component {
 				</div>		  
 
 				<div className="ui segment">
-			  	<div className="ui cards">
+			  	<div className="ui cards player">
 			  		{charCards}
 			  	</div>
 				</div>		  
