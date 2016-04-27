@@ -8,7 +8,7 @@ class Combat {
     this.parties = combatParties;
     this.combatants = {};
     this.combatantsArray = [];
-    this.turnDelay = 3000;
+    this.turnDelay = 500;
 
 
     this.combatState = {};
@@ -52,24 +52,34 @@ class Combat {
       console.log("--------------------------------");
     }
 
-    setTimeout( function() {
-                  self.makeTurn(self);
-                }
-                , 
-                self.turnDelay);
+    self.makeTurn(self);
+    // setTimeout( function() {
+    //               self.makeTurn(self);
+    //             }
+    //             , 
+    //             self.turnDelay);
   }
 
   makeTurn(self) {
+    // console.log("");
+    // console.log("-- Turn: " + self.turn +   " (" + char.getPerson().getName()  + ")");
+
     var char = self.combatants[self.turn];
-    console.log("");
-    console.log("-- Turn: " + self.turn +   " (" + char.getPerson().getName()  + ")");
+    var delay = 0;
 
     var turn = new CombatTurn(char, self.combatantsArray);
     var turnResult = turn.make();
+
     if(turnResult) {
       self.turnsMadeLastRound++;
+      delay = self.turnDelay;
     }
-    self.endTurn(self);
+
+    setTimeout( function() {
+                  self.endTurn(self);
+                }
+                , 
+                delay);
   }
 
   endTurn(self) {
@@ -98,7 +108,7 @@ class Combat {
 
 
     // Kill switch
-    if(self.round > 15) {
+    if(self.round > 30) {
       self.combatIsOver = true;
       console.log("-- Combat is over");
       console.log("--------------------------------");

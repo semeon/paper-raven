@@ -16,7 +16,8 @@ class CombatTurn {
       this.target = this.chooseTarget();
 
       if (this.target) {
-        console.log("---- Target: " + this.target.getPerson().getName());
+        // console.log("---- Target: " + this.target.getPerson().getName());
+
         var attackAttempt = this.actor.getCombatAbility().attackRoll();
         // console.dir("---- Attack attempt:");
         // console.dir(attackAttempt);
@@ -29,15 +30,15 @@ class CombatTurn {
                             this.target.getPerson().getName() + " for " + 
                             attackResult.damage + " HP");
         this.target.receiveAttack(attackResult);
-        console.log("---- " +  this.target.getPerson().getName() + " HP: " + this.target.getHealth().getHP() + "/" + this.target.getHealth().getMaxHP());
+        // console.log("---- " +  this.target.getPerson().getName() + " HP: " + this.target.getHealth().getHP() + "/" + this.target.getHealth().getMaxHP());
 
       	turnResult = true;
 
       } else {
-        console.log("---- Target not found");
+        // console.log("---- Target not found");
       }
     } else {
-      console.log("---- " + this.actor.getPerson().getName() + " is dead and cannot make the turn.");
+      // console.log("---- " + this.actor.getPerson().getName() + " is dead and cannot make the turn.");
     }
 
 
