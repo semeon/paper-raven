@@ -47,9 +47,6 @@ class Character {
   getExp() { 
     return this.exp; 
   }
-  getDerived() { 
-    return this.derived; 
-  }
 
   getCombatAbility() { 
     return this.combatAbility; 
@@ -63,11 +60,7 @@ class Character {
   }
 
   joinParty(p){
-    // if (p.getLocation().getID() == this.location.getID() ) {
-    //   this.party = p;
-    // } else {
-    //   console.error("CANNOT JOIN REMOTE PARTY");
-    // }
+    this.party = p;
   }
 
 
@@ -80,46 +73,6 @@ class Character {
     }
   }
 
-
-/**
-
-  // Person
-    getName() {
-      return this.person.getName();
-    }
-    getGender() {
-      return this.person.getGender();
-    }
-
-  // Health
-    isAlive() {
-      return this.health.getHP()>0;
-    }
-    getHP() {
-      return this.health.getHP();
-    }
-    getMaxHP() {
-      return this.health.getMaxHP();
-    }
-    takeDamage(d) {
-      this.health.decHP(d);
-    }
-
-  // Experience
-    getLevel() {
-      return this.exp.getLevel();
-    }
-    getXP() {
-      return this.exp.getXP();
-    }
-    getNextLvlXP() {
-      return this.health.getMaxHP();
-    }
-    gainXP(xp) {
-      this.exp.gainXP(xp);
-    }
-
-*/
 
   // Output
     print(p) {

@@ -10,8 +10,8 @@ export var locGen = {};
 locGen.GenerateLocation = function () {
 
 	var loc = new Location("loc01", chance.city());
-	var raiders = charGen.GenerateParty("raiders", 3, "Raiders");
-	var junkies = charGen.GenerateParty("p1", 3, "Junkies", "sticky_max.png");
+	var raiders = charGen.GenerateParty("raiders", 1, "Raiders");
+	var junkies = charGen.GenerateParty("p1", 1, "Junkies", "sticky_max.png");
 
 	loc.addParties([raiders, junkies]);
 

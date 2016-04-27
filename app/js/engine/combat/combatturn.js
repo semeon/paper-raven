@@ -8,30 +8,38 @@ class CombatTurn {
 
   make() {
 
-  	var turnResult = true;
-  	// console.log("Turn: " + this.actor.getPerson().getName());
-    this.target = this.chooseTarget();
+  	var turnResult = false;
 
-    if (this.target) {
-  		// console.log("- Target: " + this.target.getPerson().getName());
-    	var attackAttempt = this.actor.getCombatAbility().attackRoll();
-	    // console.dir("Attack attempt:");
-	    // console.dir(attackAttempt);
 
-    	var attackResult = this.target.getCombatAbility().defenseRoll(attackAttempt);
-	    // console.dir("Attack result:");
-	    // console.dir(attackResult);
+    if (this.actor.getHealth().isAlive()) {
 
-      console.log("");
-	    console.log("- " +  this.actor.getPerson().getName() + " hit " + 
-                          this.target.getPerson().getName() + " for " + 
-                          attackResult.damage + " HP");
-	    this.target.receiveAttack(attackResult);
+      this.target = this.chooseTarget();
 
-	    this.target.print("h");
+      if (this.target) {
+        console.log("---- Target: " + this.target.getPerson().getName());
+        var attackAttempt = this.actor.getCombatAbility().attackRoll();
+        // console.dir("---- Attack attempt:");
+        // console.dir(attackAttempt);
+
+        var attackResult = this.target.getCombatAbility().defenseRoll(attackAttempt);
+        // console.dir("---- Attack result:");
+        // console.dir(attackResult);
+        // console.log("");
+        console.log("---- " +  this.actor.getPerson().getName() + " hits " + 
+                            this.target.getPerson().getName() + " for " + 
+                            attackResult.damage + " HP");
+        this.target.receiveAttack(attackResult);
+        console.log("---- " +  this.target.getPerson().getName() + " HP: " + this.target.getHealth().getHP() + "/" + this.target.getHealth().getMaxHP());
+
+      	turnResult = true;
+
+      } else {
+        console.log("---- Target not found");
+      }
     } else {
-    	turnResult = false;
+      console.log("---- " + this.actor.getPerson().getName() + " is dead and cannot make the turn.");
     }
+
 
     return turnResult;
   }
@@ -49,6 +57,11 @@ class CombatTurn {
   	}
   	return target;
   }
+
+  delay() {
+  } 
+
+
 }
 
 export default CombatTurn;
