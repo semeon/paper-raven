@@ -32,7 +32,7 @@ export class InhabitantsView extends React.Component {
 
 	  	var cGroup = (
 				<div key={"group_"+p} className="ui segment red">
-					<div className="ui attached cards">
+					<div className="ui attached cards npc">
 					  	{charRows}
 					</div>
 				</div>
