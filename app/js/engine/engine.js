@@ -26,14 +26,11 @@ export class GameEngine {
 		this.hero = charGen.GenerateChar("hero", "Tannhauser", "graham.png");
   	this.hero.getExp().gainXP(3000);
 
-		var charRan1 = charGen.GenerateChar("charRan1", chance.first(), "crazy_wrench.png");
+		var charRan1 = charGen.GenerateChar("wrench", chance.first(), "crazy_wrench.png");
   	charRan1.getExp().gainXP(2000);
 
-		var charRan2 = charGen.GenerateChar("charRan2", chance.first(), "crazy_wrench.png");
-  	charRan2.getExp().gainXP(5000);
-
 		this.heroParty = new Party("heroParty", "The Party", "neutral");
-  	this.heroParty.addMembers([this.hero, charRan1, charRan2]);
+  	this.heroParty.addMembers([this.hero, charRan1]);
 	}
 
 	createLocation() {
