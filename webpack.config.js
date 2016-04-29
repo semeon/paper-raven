@@ -14,7 +14,7 @@ module.exports = {
   // latter form given it's convenient with more complex configurations.
 
   entry: {
-    js:         PATHS.app + '/app.js',
+    js:         PATHS.app + '/index.js',
     html:       PATHS.app + '/index.html',    
   },
 

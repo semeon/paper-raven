@@ -11,7 +11,6 @@ export class RightPanel extends React.Component {
   }
 
 	componentDidUpdate() {
-		console.log("!!!!!!!!!!!!!!!!!componentDidUpdate");
 		var element = document.getElementById("activity-feed");
 		element.scrollTop = element.scrollHeight;
 	}
