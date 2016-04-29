@@ -4,13 +4,16 @@ var chance = new Chance();
 import {charGen} 	from 'js/utils/charGen.js';
 import {locGen} 	from 'js/utils/locGen.js';
 
-
 import {dice} 		from 'js/model/dice/dice.js';
+import {logger}   from 'js/engine/eventlogger/eventlogger.js';
+
 import Location 	from 'js/model/location/location.js';
 import Party 			from 'js/model/party/party.js';
 import Character 	from 'js/model/char/character.js';
 
 import Combat 		from './combat/combat.js';
+
+
 
 export class GameEngine {
 
@@ -19,7 +22,9 @@ export class GameEngine {
 		this.location = {};
 
   	this.createParty();
-		this.createLocation()
+		this.createLocation();
+
+    // this.logger = logger;
 	}
 
 	createParty() {
@@ -56,6 +61,11 @@ export class GameEngine {
   getLocation() {
   	return this.location;
   }
+
+  getLogger() {
+    return this.logger;
+  }
+
 
 }
 

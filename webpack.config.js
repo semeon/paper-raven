@@ -18,6 +18,12 @@ module.exports = {
     html:       PATHS.app + '/index.html',    
   },
 
+  devServer: {
+      // This is required for webpack-dev-server. The path should  
+      // be an absolute path to your build destination. 
+      outputPath: PATHS.build
+  },
+
   output: {
     path:     PATHS.build,
     filename: "bundle.js"
@@ -60,7 +66,7 @@ module.exports = {
       ],
       {
         ignore: [
-                '*.DS_Store'
+                '.DS_Store'
               ],
         copyUnmodified: true
       }

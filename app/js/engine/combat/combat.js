@@ -1,3 +1,5 @@
+import {logger}   from 'js/engine/eventlogger/eventlogger.js';
+
 import Combatants from './combatants.js';
 import CombatTurn from './combatturn.js';
 
@@ -96,8 +98,6 @@ class Combat {
 
       if(self.turnsMadeLastRound == 0) {
         self.combatIsOver = true;
-        console.log("-- Combat is over");
-        console.log("--------------------------------");
       } 
 
       // Round stat reset
@@ -118,11 +118,21 @@ class Combat {
     // Check if combat is not over
     if(!self.combatIsOver) {
       self.startNextTurn();
+    } else {
+      this.endCombat();
     }
 
 
   }
 
+  endCombat() {
+    console.log("-- Combat is over");
+    console.log("--------------------------------");
+
+    logger.log("Combat is over.");
+
+    console.dir(logger.getFeed());
+  }
 
 
   printOrder(order) {
@@ -133,7 +143,6 @@ class Combat {
                   ", initiative: " + order[i].getCombatAbility().getInitiative());
     }
   }
-
 
 
 }

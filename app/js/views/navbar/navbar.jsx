@@ -3,13 +3,21 @@ import {render} from 'react-dom';
 
 export class Navbar extends React.Component {
   render () {
+
+		var toggleModal = function() {
+			$('#combat-view')
+			  .modal('show')
+			;
+
+		}
+
     return (
 		  <div className="ui container">
 		    <a className="item">
 		      <i className="home icon"></i> Home
 		    </a>
-		    <a className="item">
-		      <i className="grid layout icon"></i> Browse
+		    <a className="item" onClick={toggleModal}>
+		      <i className="grid layout icon"></i> Combat
 		    </a>
 		    <a className="item">
 		      <i className="mail icon"></i> Messages

@@ -1,3 +1,5 @@
+import {logger}   from 'js/engine/eventlogger/eventlogger.js';
+
 class CombatTurn {
 
   constructor(c, e) {
@@ -26,9 +28,10 @@ class CombatTurn {
         // console.dir("---- Attack result:");
         // console.dir(attackResult);
         // console.log("");
-        console.log("---- " +  this.actor.getPerson().getName() + " hits " + 
-                            this.target.getPerson().getName() + " for " + 
-                            attackResult.damage + " HP");
+        var message = this.actor.getPerson().getName() + " hits " + this.target.getPerson().getName() + " for " + attackResult.damage + " HP";
+        console.log(message);
+        logger.log(message);
+
         this.target.receiveAttack(attackResult);
         // console.log("---- " +  this.target.getPerson().getName() + " HP: " + this.target.getHealth().getHP() + "/" + this.target.getHealth().getMaxHP());
 
@@ -40,8 +43,6 @@ class CombatTurn {
     } else {
       // console.log("---- " + this.actor.getPerson().getName() + " is dead and cannot make the turn.");
     }
-
-
     return turnResult;
   }
 

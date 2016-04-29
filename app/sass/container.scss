@@ -3,15 +3,25 @@
 }
 
 #left-panel {
-	min-width: 280px;
+	width: 280px;
 	padding-top: 30px;
 	margin-left: 10px;
+}
+
+#right-panel {
+	width: 280px;
+	padding-top: 30px;
 }
 
 
 #central-panel {
 	padding-top: 30px;
-	min-width: 785px;
+	width: 470px;
+}
+
+#activity-feed {
+	height: 300px;
+	overflow: scroll;
 }
 
 /*
