@@ -10,7 +10,6 @@ export class Application {
 		this.renderer = new AppRenderer(this.ge);
 		logger.setRenderer(this.renderer);
 
-		// this.start();
 	}
 
 	start() {

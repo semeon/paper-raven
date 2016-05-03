@@ -20,7 +20,7 @@ class Combat {
       this.combatIsOver = false;
 
     this.set();
-    this.startNextTurn();
+    // this.startNextTurn();
 
   }
 

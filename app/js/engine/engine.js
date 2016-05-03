@@ -43,11 +43,9 @@ export class GameEngine {
 	}
 
   start(p) {
-
   	var combatParties = this.location.getPartiesArray();
   	combatParties.push(this.heroParty);
   	var combat = new Combat(combatParties);
-  	// combat.start();
   }
 
   getHero() {
