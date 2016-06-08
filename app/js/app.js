@@ -1,15 +1,17 @@
 const path = require('path');
 
 import {logger}   		from 'js/engine/eventlogger/eventlogger.js';
+import {AppState}   	from './appState.js';
+
 import {GameEngine}		from 'js/engine/engine.js';
 import {AppRenderer}  from 'js/views/renderer.jsx';
 
 export class Application {
 	constructor() {
-		this.ge = new GameEngine();
+		this.state = new AppState(this);
+		this.ge = new GameEngine(this);
 		this.renderer = new AppRenderer(this.ge);
 		logger.setRenderer(this.renderer);
-
 	}
 
 	start() {

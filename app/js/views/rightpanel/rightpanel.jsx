@@ -2,7 +2,6 @@ import React from 'react';
 import {render} from 'react-dom';
 
 import {ActivityFeed} from 	'js/views/feed/feed.jsx';
-import {logger}   from 'js/engine/eventlogger/eventlogger.js';
 
 export class RightPanel extends React.Component {
 
@@ -27,7 +26,7 @@ export class RightPanel extends React.Component {
 				</div>		  
 
 				<div className="ui segment" id="activity-feed">
-					<ActivityFeed feed={logger.getFeed()}/>
+					<ActivityFeed feed={this.props.feed}/>
 				</div>		  
 
 		  </div>

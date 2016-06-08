@@ -26,10 +26,12 @@ charGen.GenerateParty = function(pid, n, title, image) {
 }
 
 
-charGen.GenerateChar = function(id, name, image) {
+charGen.GenerateChar = function(id, name, image, isPlayer) {
 
 	var char = {};
 	char.id = id;
+	char.isPlayer = false;
+	if (isPlayer) char.isPlayer = true;
 	char.person = {};
 	char.person.name = name;
 	char.person.gender = "male";

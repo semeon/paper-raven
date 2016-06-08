@@ -23,22 +23,33 @@ export class Container extends React.Component {
 		var location 	= this.props.ge.getLocation();
 
     return (
-			<div className="ui segment" id="container">
-			  <div className="ui left rail very close" id="left-panel">
+			<div className="ui grid" id="container">
+				<div className="three wide column">
 					<LeftPanel party={party} location={location} />
-			  </div>
+				</div>
 
-			  <div className="ui right rail  very close" id="right-panel">
-					<RightPanel	/>
-			  </div>
-
-				<CentralPanel hero={hero} location={location} />
-
-
+				<div className="ten wide column">
+					<CentralPanel ge={this.props.ge} hero={hero} location={location} />
+				</div>
+			
 			</div>
     );
   }
 }
+
+			// <div className="ui segment" id="container">
+			//   <div className="ui left rail very close" id="left-panel">
+			// 		<LeftPanel party={party} location={location} />
+			//   </div>
+			//
+			//   <div className="ui right rail  very close" id="right-panel">
+			// 		<RightPanel	feed={this.props.ge.getLogger().getFeed()}/>
+			//   </div>
+			//
+			// 	<CentralPanel ge={this.props.ge} hero={hero} location={location} />
+			//
+			//
+			// </div>
 
 		  	// <InhabitantsView location={location} />
 

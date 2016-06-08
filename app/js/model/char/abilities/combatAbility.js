@@ -79,6 +79,28 @@ class CombatAbility extends Ability {
     return defense;
   }
 
+  chooseTarget(enemies) {
+    // REFACTOR?
+    var target = false; 
+
+    // if (!this.actor._isPlayer) {
+    if (true) {
+      for (var i=0; i<enemies.length; i++) {
+        var e = enemies[i];
+        if (e.getHealth().isAlive() && e.getID()!=this.char.getID()) {
+          target = e;
+          break;
+        }
+      }
+    } else {
+      // Wait for the player to pick
+
+    }
+
+    return target;
+  }
+
+
 }
 
 export default CombatAbility;

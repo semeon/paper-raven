@@ -11,6 +11,8 @@ class Character {
 
   constructor(p) {
     this._id = p.id;
+    this._isPlayer = false;
+    if (p.isPlayer) this._isPlayer = true;
 
 		this.person = new Person(p.person);
     this.special = new Special(p.special);

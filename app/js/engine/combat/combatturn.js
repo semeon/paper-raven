@@ -2,69 +2,32 @@ import {logger}   from 'js/engine/eventlogger/eventlogger.js';
 
 class CombatTurn {
 
-  constructor(c, e) {
-  	this.actor = c;
-  	this.enemies = e;
-  	this.target = false;
+  constructor(combatant) {
+  	this.actor = combatant;
+  	this.char = combatant.char;
+    this.result = false;
   }
 
-  make() {
+  attack(target) {
+    var attackAttempt = this.char.getCombatAbility().attackRoll();
+    // console.dir("---- Attack attempt:");
+    // console.dir(attackAttempt);
 
-  	var turnResult = false;
+    var attackResult = this.char.getCombatAbility().defenseRoll(attackAttempt);
+    // console.dir("---- Attack result:");
+    // console.dir(attackResult);
+    // console.log("");
 
+    var message = this.char.getPerson().getName() + " hits " + target.getPerson().getName() + " for " + attackResult.damage + " HP";
+    console.log(message);
+    logger.log(message);
 
-    if (this.actor.getHealth().isAlive()) {
+    target.receiveAttack(attackResult);
+    // console.log("---- " +  target.getPerson().getName() + " HP: " + target.getHealth().getHP() + "/" + target.getHealth().getMaxHP());
 
-      this.target = this.chooseTarget();
-
-      if (this.target) {
-        // console.log("---- Target: " + this.target.getPerson().getName());
-
-        var attackAttempt = this.actor.getCombatAbility().attackRoll();
-        // console.dir("---- Attack attempt:");
-        // console.dir(attackAttempt);
-
-        var attackResult = this.target.getCombatAbility().defenseRoll(attackAttempt);
-        // console.dir("---- Attack result:");
-        // console.dir(attackResult);
-        // console.log("");
-        var message = this.actor.getPerson().getName() + " hits " + this.target.getPerson().getName() + " for " + attackResult.damage + " HP";
-        console.log(message);
-        logger.log(message);
-
-        this.target.receiveAttack(attackResult);
-        // console.log("---- " +  this.target.getPerson().getName() + " HP: " + this.target.getHealth().getHP() + "/" + this.target.getHealth().getMaxHP());
-
-      	turnResult = true;
-
-      } else {
-        // console.log("---- Target not found");
-      }
-    } else {
-      // console.log("---- " + this.actor.getPerson().getName() + " is dead and cannot make the turn.");
-    }
-    return turnResult;
+    this.result = true;
   }
-
-
-  chooseTarget() {
-  	var target = false; 
-
-  	for (var i=0; i<this.enemies.length; i++) {
-  		var e = this.enemies[i];
-  		if (e.getHealth().isAlive() && e.getID()!=this.actor.getID()) {
-  			target = e;
-  			break;
-  		}
-  	}
-  	return target;
-  }
-
-  delay() {
-  } 
-
 
 }
 
 export default CombatTurn;
-

@@ -17,18 +17,23 @@ import Combat 		from './combat/combat.js';
 
 export class GameEngine {
 
-	constructor(p) {
+	constructor(app) {
+
+		this.app = app;
+
 		this.hero = {};
 		this.location = {};
 
   	this.createParty();
 		this.createLocation();
 
-    // this.logger = logger;
+    this.activity = {};
+
+    this.logger = logger;
 	}
 
 	createParty() {
-		this.hero = charGen.GenerateChar("hero", "Tannhauser", "graham.png");
+		this.hero = charGen.GenerateChar("hero", "Tannhauser", "graham.png", true);
   	this.hero.getExp().gainXP(3000);
 
 		var charRan1 = charGen.GenerateChar("wrench", chance.first(), "crazy_wrench.png");
@@ -44,8 +49,11 @@ export class GameEngine {
 
   start(p) {
   	var combatParties = this.location.getPartiesArray();
-  	combatParties.push(this.heroParty);
-  	var combat = new Combat(combatParties);
+  	combatParties.unshift(this.heroParty);
+
+		this.app.state.update("activity", "combat");
+  	this.activity = new Combat(combatParties);
+		// this.activity.start();
   }
 
   getHero() {
@@ -62,6 +70,10 @@ export class GameEngine {
 
   getLogger() {
     return this.logger;
+  }
+
+  getActivity() {
+    return this.activity;
   }
 
 

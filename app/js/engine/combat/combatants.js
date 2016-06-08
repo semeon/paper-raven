@@ -1,3 +1,6 @@
+import Combatant from './combatant.js';
+
+
 class Combatants {
 
   constructor(order) {
@@ -6,7 +9,8 @@ class Combatants {
 
     for (var i = 0; i < order.length; i++) {
       var char = order[i];
-      this.combatants[i] = char;
+			var combatant = new Combatant(char);
+      this.combatants[i] = combatant;
     }
 
     this.print(); 
@@ -29,13 +33,6 @@ class Combatants {
     return result;
   }
 
-  isAlive(n) {
-    var result = false;
-    if (this.combatants[n]) {
-      result = this.combatants[n].getHealth().isAlive();
-    }
-    return result;
-  }
 
   // getNextActive(n) {
   //   var result = false;

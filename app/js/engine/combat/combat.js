@@ -1,6 +1,7 @@
 import {logger}   from 'js/engine/eventlogger/eventlogger.js';
 
-import Combatants from './combatants.js';
+// import Combatants from './combatants.js';
+import Combatant from './combatant.js';
 import CombatTurn from './combatturn.js';
 
 class Combat {
@@ -12,6 +13,7 @@ class Combat {
     this.combatantsArray = [];
     this.turnDelay = 500;
 
+		this.phase = "pending"; // in-progress, completed
 
     this.combatState = {};
       this.round = 0;
@@ -19,11 +21,19 @@ class Combat {
       this.turnsMadeLastRound = 0;
       this.combatIsOver = false;
 
-    this.set();
-    // this.startNextTurn();
+    this.attacker = {};
+    this.target = {};
 
+    this.set();
   }
 
+  getAttacker() {
+    return this.attacker;
+  }
+
+  getDefender() {
+    return this.target;
+  }
 
   set(p) {
     var order = [];
@@ -40,52 +50,44 @@ class Combat {
 
     for (var i = 0; i < order.length; i++) {
       var char = order[i];
-      this.combatants[i] = char;
+			var combatant = new Combatant(char);
+      this.combatants[i] = combatant;
     }
   }
+
+	start() {
+		this.phase = "in-progress";
+		this.startNextTurn();
+	}
 
   startNextTurn() {
     var self = this;
 
-    // New Round
-    if (self.turn == 0) {
-      console.log("--------------------------------");
-      console.log("-- Combat Round: " + this.round);
-      console.log("--------------------------------");
-    }
+    this.attacker = this.combatants[this.turn];
 
-    self.makeTurn(self);
-    // setTimeout( function() {
-    //               self.makeTurn(self);
-    //             }
-    //             , 
-    //             self.turnDelay);
+    if (this.attacker.isActive()) {
+      var turn = new CombatTurn(this.attacker);
+      this.target = this.attacker.chooseTarget(self.combatantsArray);
+
+      if (this.target) {
+        turn.attack(this.target);
+        this.turnsMadeLastRound++;
+
+        setTimeout( function() {self.endTurn(self);}, this.turnDelay);
+
+      } else {
+        this.endTurn(self);
+      }
+    } else {
+      this.endTurn(self);
+    }
   }
 
-  makeTurn(self) {
-    // console.log("");
-    // console.log("-- Turn: " + self.turn +   " (" + char.getPerson().getName()  + ")");
-
-    var char = self.combatants[self.turn];
-    var delay = 0;
-
-    var turn = new CombatTurn(char, self.combatantsArray);
-    var turnResult = turn.make();
-
-    if(turnResult) {
-      self.turnsMadeLastRound++;
-      delay = self.turnDelay;
-    }
-
-    setTimeout( function() {
-                  self.endTurn(self);
-                }
-                , 
-                delay);
-  }
 
   endTurn(self) {
     // console.log("---- TURN CALLBACK HAPPENS NOW");
+
+    if (!self) self == this;
 
     self.turn++;
 
@@ -93,45 +95,30 @@ class Combat {
     if(!self.combatants[self.turn+1]) {
 
       console.log("-- Round is over");
-      console.log("--------------------------------");
-      console.log("");
 
       if(self.turnsMadeLastRound == 0) {
         self.combatIsOver = true;
       } 
 
-      // Round stat reset
+      // Round stats reset
       self.turnsMadeLastRound = 0;
       self.turn = 0;
       self.round ++;
     } 
 
-
     // Kill switch
-    if(self.round > 30) {
-      self.combatIsOver = true;
-      console.log("-- Combat is over");
-      console.log("--------------------------------");
-    }
-
+    // if(self.round > 30) {
+    //   this.endCombat();
+    // }
 
     // Check if combat is not over
     if(!self.combatIsOver) {
       self.startNextTurn();
     } else {
-      this.endCombat();
+      console.log("-- Combat is over");
+      logger.log("Combat is over.");
+      this.target = null;
     }
-
-
-  }
-
-  endCombat() {
-    console.log("-- Combat is over");
-    console.log("--------------------------------");
-
-    logger.log("Combat is over.");
-
-    console.dir(logger.getFeed());
   }
 
 

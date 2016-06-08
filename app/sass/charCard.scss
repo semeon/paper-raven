@@ -1,24 +1,4 @@
-.ui.cards.player  .ui.card.char {
-	width: 222px;
-}
 
-.player .card.char .image img {
-	width: 222px;
-}
-
-.ui.cards.npc  .ui.card.char {
-	width: 160px;
-}
-
-.npc .card.char .image img {
-	width: 160px;
-}
-
-
-
-.ui.cards .card.char .content {
-	padding: 0.5em;
-}
 
 .card.char .label {
 	padding: 3px;
@@ -30,12 +10,17 @@
 .card.char .label.overflow.bottom {
 	bottom: 4px;
 }
+.card.char .label.overflow.left {
+	left: 4px;
+}
+
 .card.char .label.overflow.right {
 	right: 4px;
 }
 
-
-
+.card.char.thumb.selected  {
+	opacity: 0.5;
+}
 
 /* combat stats */
 

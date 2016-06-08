@@ -3,8 +3,6 @@ import {render} from 'react-dom';
 
 import {CharCard} from 'js/views/char/charCard.jsx';
 
-import {logger}   from 'js/engine/eventlogger/eventlogger.js';
-
 export class ActivityFeed extends React.Component {
 
   constructor(props) {
