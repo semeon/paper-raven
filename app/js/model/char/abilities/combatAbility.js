@@ -82,7 +82,6 @@ class CombatAbility extends Ability {
   chooseTarget(enemies) {
     // REFACTOR?
     var target = false; 
-
     // if (!this.actor._isPlayer) {
     if (true) {
       for (var i=0; i<enemies.length; i++) {
@@ -96,11 +95,8 @@ class CombatAbility extends Ability {
       // Wait for the player to pick
 
     }
-
     return target;
   }
-
-
 }
 
 export default CombatAbility;

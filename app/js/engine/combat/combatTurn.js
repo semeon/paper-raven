@@ -1,6 +1,6 @@
 import {logger}   from 'js/engine/eventlogger/eventlogger.js';
 
-class CombatTurn {
+export class CombatTurn {
 
   constructor(combatant) {
   	this.actor = combatant;
@@ -8,26 +8,36 @@ class CombatTurn {
     this.result = false;
   }
 
+	perform() {
+		console.log("--- Actor: ");
+		console.dir(this.actor);
+    var target = this.actor.chooseTarget(this.combatants);
+		console.log("--- Target: ");
+		console.dir(target);
+    if (target) {
+			this.attack(target);
+      // turn.perform(this.target);
+    }
+	}
+
   attack(target) {
     var attackAttempt = this.char.getCombatAbility().attackRoll();
     // console.dir("---- Attack attempt:");
     // console.dir(attackAttempt);
 
-    var attackResult = this.char.getCombatAbility().defenseRoll(attackAttempt);
+    var attackResult = target.char.getCombatAbility().defenseRoll(attackAttempt);
     // console.dir("---- Attack result:");
     // console.dir(attackResult);
     // console.log("");
 
-    var message = this.char.getPerson().getName() + " hits " + target.getPerson().getName() + " for " + attackResult.damage + " HP";
+    var message = this.char.getPerson().getName() + " hits " + target.char.getPerson().getName() + " for " + attackResult.damage + " HP";
     console.log(message);
     logger.log(message);
 
-    target.receiveAttack(attackResult);
+    target.char.receiveAttack(attackResult);
     // console.log("---- " +  target.getPerson().getName() + " HP: " + target.getHealth().getHP() + "/" + target.getHealth().getMaxHP());
 
     this.result = true;
   }
 
 }
-
-export default CombatTurn;

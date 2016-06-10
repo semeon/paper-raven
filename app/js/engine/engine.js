@@ -11,7 +11,7 @@ import Location 	from 'js/model/location/location.js';
 import Party 			from 'js/model/party/party.js';
 import Character 	from 'js/model/char/character.js';
 
-import Combat 		from './combat/combat.js';
+import {Combat}		from './combat/combat.js';
 
 
 

@@ -1,18 +1,55 @@
 class Combatant {
 
+	// GET RID OF COMBATANT LAYER?
+
   constructor(c) {
     this.char = c;
+		this.status = "active"; // "idle"
+		this.name = c.getPerson().getName();
+		this.targetList = [];
+		
+		
   }
 
 	isActive() {
 		var result = false;
-		if (this.char.getHealth().isAlive()) result = true;
+		if (this.char.getHealth().isAlive() && this.status == "active") result = true;
 		return result;
 	}
 
-	chooseTarget(targetList) {
-		var result = this.char.getCombatAbility().chooseTarget(targetList);
-		return result;
+	addEnemies(enemies) {
+		for (var i=0; i<enemies.length; i++) {
+			var target = enemies[i];
+			if (target.char._id != this.char._id) this.targetList.push(target);
+		}
+	}
+
+  chooseTarget() {
+    // REFACTOR?
+    var target = false; 
+
+    // if (!this.actor._isPlayer) {
+    if (true) {
+      for (var i=0; i<this.targetList.length; i++) {
+        var c = this.targetList[i];
+        if (c.char.getHealth().isAlive()) {
+          target = c;
+          break;
+        }
+      }
+    } else {
+      // Wait for the player to pick
+    }
+    return target;
+  }
+
+	// chooseTarget() {
+	// 	var result = this.char.getCombatAbility().chooseTarget(this.targetList);
+	// 	return result;
+	// }
+
+	setIdle() {
+		this.status = "idle";
 	}
 
 }

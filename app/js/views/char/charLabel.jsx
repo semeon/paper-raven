@@ -17,23 +17,21 @@ export class CharLabel extends React.Component {
 
     var img = person.getImageFileName();
     var imgFullPath = appSettings.character.imagePath + person.getImageFileName();
-
-
-  	var genderIconClass = "fa fa-male";
-  	if (person.getGender() == "female") {
-  		genderIconClass = "fa fa-female";
-  	}
-
-
-  	var combatStatsNodeId = char.getID() + "-combat-stats-node";
-  	var href = "#" + combatStatsNodeId;
+		
+		var labelClass = "ui image label teal";
+		
+		if(!health.isAlive()) {
+			labelClass = "ui image label disabled";
+		}
 
     return (
 			<div>
-				<a className="ui image label">
+				<a className={labelClass}>
 				  <img className="ui image" src={imgFullPath} alt={person.getName()} />
 				  {person.getName()} 
-				  <div className="detail"><i className="star icon"></i>{level}</div>
+					<div className="detail">
+						<i className="star icon"></i>{level}
+					</div>
 				</a>
 			</div>
     );
