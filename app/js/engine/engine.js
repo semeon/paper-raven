@@ -34,7 +34,7 @@ export class GameEngine {
 
 	createParty() {
 		this.hero = charGen.GenerateChar("hero", "Tannhauser", "graham.png", true);
-  	this.hero.getExp().gainXP(3000);
+  	this.hero.getExp().gainXP(30000);
 
 		var charRan1 = charGen.GenerateChar("wrench", chance.first(), "crazy_wrench.png");
   	charRan1.getExp().gainXP(2000);

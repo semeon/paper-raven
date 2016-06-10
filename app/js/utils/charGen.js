@@ -15,7 +15,7 @@ charGen.GenerateParty = function(pid, n, title, image) {
 	var mems = [];
 
 	for (var i = 0; i < n; i++) {
-		var id = "random" + i;
+		var id = "random" + pid + i;
 		var char = charGen.GenerateChar(id, chance.first(), image);
 		mems.push(char);
 	}

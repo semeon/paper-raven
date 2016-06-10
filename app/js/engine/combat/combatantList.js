@@ -32,11 +32,13 @@ export class CombatantList {
 			var listItem = {};
 			listItem.combatant = combatant;
 			listItem.order = i;
+			listItem.name = combatant.name;
 
 			if (i==0) { 
 				firstItem = listItem;
 
 			} else if (i == order.length-1) { 
+				prevItem.next = listItem;
 				listItem.next = firstItem;
 
 			} else {
@@ -50,6 +52,7 @@ export class CombatantList {
 
     }    
 		this.current = firstItem;
+
 
     for (var i = 0; i < this.combatants.length; i++) {
 			var c = this.combatants[i];
@@ -82,20 +85,6 @@ export class CombatantList {
 	}
 
   // getNextActive(n) {
-  // }
-
-
-
-  // print() {
-  //   var i = 0;
-  //
-  //   console.log("Comb collection: ");
-  //   console.log(this.getFirst());
-  //
-  //   while (this.getNext(i)) {
-  //     console.log(this.getNext(i));
-  //     i++;
-  //   }
   // }
 
 }

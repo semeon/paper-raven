@@ -42,8 +42,7 @@ export class Combat {
 
 
 	chooseActor() {
-		console.log("-- Choosing actor...");
-		if (this.actor) {
+		if (!this.actor) {
 			this.actor = this.combatants.getCurrent();
 		} else {
 			this.actor = this.combatants.getNext();
@@ -54,29 +53,19 @@ export class Combat {
 	}
 
 	makeTurn() {
-		console.log("-- Starting turn. Actor: " + this.actor.char.getPerson().getName());
-		
     if (this.actor.isActive()) { // Othervise should not happen!
       var turn = new CombatTurn(this.actor);
 			turn.perform();
     }
-		console.log("-- Turn is over.");
 	}
 
 	isOver() {
-		console.log("-- Checking if combat is over.");
 		var result = true;
-
 		var active = this.combatants.getActiveCount();
-		console.log("--- Active count: " + active);
-
 		if (active > 1) result = false;
 		// Killswitch
 		this.safetyCounter++;
-		if (this.safetyCounter > 50) result = true;
-
-		console.log("--- isOver(): " + result);
-
+		if (this.safetyCounter > 100) result = true;
 		return result;
 	}
 

@@ -28,7 +28,7 @@ export class Container extends React.Component {
 					<LeftPanel party={party} location={location} />
 				</div>
 
-				<div className="ten wide column">
+				<div className="twelve wide column">
 					<CentralPanel ge={this.props.ge} hero={hero} location={location} />
 				</div>
 			

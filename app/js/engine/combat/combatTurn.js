@@ -9,11 +9,7 @@ export class CombatTurn {
   }
 
 	perform() {
-		console.log("--- Actor: ");
-		console.dir(this.actor);
     var target = this.actor.chooseTarget(this.combatants);
-		console.log("--- Target: ");
-		console.dir(target);
     if (target) {
 			this.attack(target);
       // turn.perform(this.target);
@@ -36,6 +32,13 @@ export class CombatTurn {
 
     target.char.receiveAttack(attackResult);
     // console.log("---- " +  target.getPerson().getName() + " HP: " + target.getHealth().getHP() + "/" + target.getHealth().getMaxHP());
+
+		if (!target.char.getHealth().isAlive()) {
+			target.die();
+	    // message = target.char.getPerson().getName() + " is dead.";
+	    // console.log(message);
+	    // logger.log(message);
+		}
 
     this.result = true;
   }

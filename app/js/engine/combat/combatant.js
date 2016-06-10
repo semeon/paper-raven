@@ -4,11 +4,9 @@ class Combatant {
 
   constructor(c) {
     this.char = c;
-		this.status = "active"; // "idle"
+		this.status = "active"; // "idle", "down"
 		this.name = c.getPerson().getName();
 		this.targetList = [];
-		
-		
   }
 
 	isActive() {
@@ -43,13 +41,12 @@ class Combatant {
     return target;
   }
 
-	// chooseTarget() {
-	// 	var result = this.char.getCombatAbility().chooseTarget(this.targetList);
-	// 	return result;
-	// }
-
 	setIdle() {
 		this.status = "idle";
+	}
+
+	die() {
+		this.status = "down";
 	}
 
 }
