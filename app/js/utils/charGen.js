@@ -19,15 +19,12 @@ charGen.GenerateParty = function(pid, n, title, image) {
 		var char = charGen.GenerateChar(id, chance.first(), image);
 		mems.push(char);
 	}
-
 	party.addMembers(mems);
-
 	return party;
 }
 
 
 charGen.GenerateChar = function(id, name, image, isPlayer) {
-
 	var char = {};
 	char.id = id;
 	char.isPlayer = false;
@@ -49,5 +46,6 @@ charGen.GenerateChar = function(id, name, image, isPlayer) {
 	char.special["L"] = dice.rollD10().value;
 
 	var res = new Character(char);
+
 	return res;
 }

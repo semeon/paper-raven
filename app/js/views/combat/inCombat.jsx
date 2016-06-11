@@ -3,10 +3,58 @@ import {render} from 'react-dom';
 
 import {appSettings} from 'settings.js';
 
+import {CharThumbnail} from 'js/views/char/charThumbnail.jsx';
+
+
+
 export class InCombatView extends React.Component {
   render() {
 
 		var combat = this.props.combat;
+		var turn = combat.turn;
+		var actor = combat.getActor();
+		
+		console.log("== view: turn.state: " + turn.state);
+		
+		var view = {};
+		
+		if ( turn.state == "action-pending" ) {
+			view = (
+				<div className="ui grid">
+					<div className="four wide column center aligned">
+						<h5>Actor</h5>
+						<CharThumbnail char={actor.char} />
+					</div>
+
+					<div className="eight wide column center aligned bottom aligned">
+						<h5>Action</h5>
+						<button className="ui blue button" onClick={onAttackClick}>Attack</button>				
+					</div>
+
+					<div className="four wide right floated column center aligned">
+						<h5>Target</h5>
+						<CharThumbnail char={turn.target.char} />
+					</div>
+				</div>				
+			);
+			
+		} else {
+			view = (
+				<div className="ui icon red message">
+				  <i className="warning circle icon"></i>
+				  <div className="content">
+				    <div className="header">
+				      The combat is in progress
+				    </div>
+				  </div>
+				</div>					
+			);
+		}
+		
+		function onAttackClick() {
+			console.log("== view: onAttackClick()");
+			turn.performActon();
+		}
 		
 		//     var img = "default.png";
 		//     var imgFullPath = appSettings.character.imagePath + img;
@@ -43,24 +91,10 @@ export class InCombatView extends React.Component {
 		
     return (
 			<div>
+		
 
-				<div className="ui icon red message">
-				  <i className="warning circle icon"></i>
-				  <div className="content">
-				    <div className="header">
-				      The combat is in progress
-				    </div>
-				  </div>
-				</div>			
+				{view}
 
-				<div className="ui equal width grid">
-					<div className="column center aligned">
-			    	<button className="ui blue button" onClick={onStartClick}>Start Combat</button>
-					</div>
-					<div className="column center aligned">
-			    	<button className="ui button disabled">Retreat</button>
-					</div>
-				</div>	
 			
 			</div>
     );

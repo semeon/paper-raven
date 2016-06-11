@@ -1,6 +1,7 @@
 import {logger}   from 'js/engine/eventlogger/eventlogger.js';
 
-// import CombatRound from './combatRound.js'; // Not sure if I need it
+import {app}   from 'js/app.js';
+
 import {CombatantList} from './combatantList.js';
 import {Combatant} from './combatant.js';
 import {CombatTurn} from './combatTurn.js';
@@ -11,8 +12,10 @@ export class Combat {
     this.parties = combatParties;
     this.combatants;
 		this.phase; // pending, in-progress, completed
-    this.actor;;
+    this.actor;
 		this.safetyCounter = 0;
+		
+		this.turn;
 
     this.set();
   }
@@ -23,45 +26,57 @@ export class Combat {
 		this.phase = "pending";
   }
 
+	getActor() {
+		return this.actor;
+	}
+
+	// ------------------
+
 	start() {
 		console.log("* COMBAT STARTS *");
 		this.phase = "in-progress";
-		this.combat();
+		app.render();		
+		this.startNextTurn();
 	}
 
 
-	combat() {
-		do {
-			this.chooseActor();
-			this.makeTurn();
+	startNextTurn() {
+		var self = this;
+		if (!self.isOver()) { 
+			self.chooseActor();
+			self.makeTurn();
+		} else {
+			self.end();			
 		}
-		while(!this.isOver());
-		
-		this.end();
 	}
-
 
 	chooseActor() {
 		if (!this.actor) {
 			this.actor = this.combatants.getCurrent();
 		} else {
-			this.actor = this.combatants.getNext();
+			this.actor = this.combatants.getNextActive();
 		}		
-
-		// console.log("-- Actor: ");
-		// console.dir(this.actor);
+		console.log("-- Actor chosen: " + this.actor.name);
 	}
 
 	makeTurn() {
+		console.log("-- makeTurn()");
     if (this.actor.isActive()) { // Othervise should not happen!
-      var turn = new CombatTurn(this.actor);
-			turn.perform();
+
+			console.log("-- new CombatTurn()");
+
+
+      this.turn = new CombatTurn(this.actor, this);
+			this.turn.perform();
+    } else {
+    	this.startNextTurn();
     }
 	}
 
 	isOver() {
 		var result = true;
 		var active = this.combatants.getActiveCount();
+		console.log("- active: " + active);
 		if (active > 1) result = false;
 		// Killswitch
 		this.safetyCounter++;

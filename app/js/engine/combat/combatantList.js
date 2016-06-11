@@ -13,7 +13,7 @@ export class CombatantList {
   }
 
 
-  set(p) {
+  set() {
     var order = [];
     for (var i = 0; i < this.parties.length; i++) {
       var partyMembers = this.parties[i].getMembersArray();
@@ -70,6 +70,22 @@ export class CombatantList {
 		this.current = next;
     return this.current.combatant;
   }
+
+  getNextActive() {
+		var next;
+		var nextActive = false;
+
+		if (this.getActiveCount() > 0) {
+			do {
+				next = this.current.next;
+				this.current = next;
+			} while(!next.combatant.isActive());
+			nextActive = this.current.combatant;
+		}
+		
+    return nextActive;
+  }
+
 
 	getActiveCount() {
 		var count = 0;

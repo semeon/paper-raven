@@ -28,7 +28,7 @@ export class CharLabel extends React.Component {
 			<div>
 				<a className={labelClass}>
 				  <img className="ui image" src={imgFullPath} alt={person.getName()} />
-				  {person.getName()} 
+				  <span>{person.getName()}</span>
 					<div className="detail">
 						<i className="star icon"></i>{level}
 					</div>

@@ -32,7 +32,7 @@ export class CombatantList extends React.Component {
 			
 			
 			var column = (
-				<div key={party._id} className="column">
+				<div key={party._id} className="sixteen wide mobile eight wide tablet five wide computer column">
 					<h5>{party.name}</h5>
 					<div className="ui list">
 					{memberNodes}

@@ -37,6 +37,10 @@ class Character {
     return this._id;
   }
 
+  isPlayer() {
+    return this._isPlayer;
+  }
+
   getPerson() { 
     return this.person; 
   }

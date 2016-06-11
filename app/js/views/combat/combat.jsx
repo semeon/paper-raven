@@ -13,7 +13,7 @@ export class CombatView extends React.Component {
 		var combat = this.props.combat;
 
 		var view = {};
-		
+		console.log("== view: combat.phase: " + combat.phase);
 		if (combat.phase == "pending") {
 			view = <PreCombatView ge={this.props.ge} combat={this.props.ge.getActivity()}/>;
 			

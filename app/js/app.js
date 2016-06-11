@@ -6,7 +6,9 @@ import {AppState}   	from './appState.js';
 import {GameEngine}		from 'js/engine/engine.js';
 import {AppRenderer}  from 'js/views/renderer.jsx';
 
-export class Application {
+
+
+class Application {
 	constructor() {
 		this.state = new AppState(this);
 		this.ge = new GameEngine(this);
@@ -19,6 +21,9 @@ export class Application {
 	}
 
 	render() {
+		// console.log("app.render()");
 		this.renderer.renderAll(this.ge);
 	}
 }
+
+export var app = new Application();
