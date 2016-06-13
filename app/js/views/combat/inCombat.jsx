@@ -21,17 +21,17 @@ export class InCombatView extends React.Component {
 		if ( turn.state == "action-pending" ) {
 			view = (
 				<div className="ui grid">
-					<div className="four wide column center aligned">
+					<div className="six wide column center aligned">
 						<h5>Actor</h5>
 						<CharThumbnail char={actor.char} />
 					</div>
 
-					<div className="eight wide column center aligned bottom aligned">
+					<div className="four wide column center aligned bottom aligned">
 						<h5>Action</h5>
 						<button className="ui blue button" onClick={onAttackClick}>Attack</button>				
 					</div>
 
-					<div className="four wide right floated column center aligned">
+					<div className="six wide right floated column center aligned">
 						<h5>Target</h5>
 						<CharThumbnail char={turn.target.char} />
 					</div>

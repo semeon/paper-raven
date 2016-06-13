@@ -1,7 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {CharCard} from 'js/views/char/charCard.jsx';
+import {logger} from 'js/engine/eventlogger/eventlogger.js';
+
 
 export class ActivityFeed extends React.Component {
 
@@ -11,8 +12,11 @@ export class ActivityFeed extends React.Component {
 
   render () {
   	var activityFeedRecords = [];
-  	for (var i = 0; i < this.props.feed.length; i++) {
-  		var message = this.props.feed[i];
+		
+		var logs = logger.getFeed();
+		
+  	for (var i = 0; i < logs.length; i++) {
+  		var message = logs[i];
   		var record = (
 					  <div key={i} className="event">
 					    <div className="content">
@@ -28,7 +32,9 @@ export class ActivityFeed extends React.Component {
     return (
 
 			<div className="ui small feed">
+
 				{activityFeedRecords}
+
 			</div>
 
 		);

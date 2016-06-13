@@ -29,6 +29,7 @@ charGen.GenerateChar = function(id, name, image, isPlayer) {
 	char.id = id;
 	char.isPlayer = false;
 	if (isPlayer) char.isPlayer = true;
+	if (isPlayer) char.isGodMode = true;
 	char.person = {};
 	char.person.name = name;
 	char.person.gender = "male";

@@ -3,9 +3,10 @@ const path = require('path');
 import React from 'react';
 import {render} from 'react-dom';
 
-import {LeftPanel} 		from 	'js/views/leftpanel/leftpanel.jsx';
-import {CentralPanel} from 	'js/views/centralpanel/centralpanel.jsx';
-import {RightPanel}   from 	'js/views/rightpanel/rightpanel.jsx';
+import {LeftPanel} 		from 	'./leftpanel/leftpanel.jsx';
+import {CentralPanel} from 	'./centralpanel/centralpanel.jsx';
+import {RightPanel}   from 	'./rightpanel/rightpanel.jsx';
+
 
 export class Container extends React.Component {
 
@@ -24,13 +25,19 @@ export class Container extends React.Component {
 
     return (
 			<div className="ui grid" id="container">
+
 				<div className="three wide column">
 					<LeftPanel party={party} location={location} />
 				</div>
 
-				<div className="twelve wide column">
+				<div className="nine wide column">
 					<CentralPanel ge={this.props.ge} hero={hero} location={location} />
 				</div>
+
+				<div className="four wide column">
+					<RightPanel />
+				</div>
+
 			
 			</div>
     );

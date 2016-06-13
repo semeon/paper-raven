@@ -20,6 +20,8 @@ export class Combat {
     this.set();
   }
 
+	// TODO: move state management to superclass
+
   set(p) {
     this.combatants = new CombatantList(this.parties);
 		console.dir(this.combatants);
@@ -60,10 +62,9 @@ export class Combat {
 	}
 
 	makeTurn() {
-		console.log("-- makeTurn()");
     if (this.actor.isActive()) { // Othervise should not happen!
 
-			console.log("-- new CombatTurn()");
+			console.log("-- new Combat Turn");
 
 
       this.turn = new CombatTurn(this.actor, this);

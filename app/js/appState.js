@@ -16,6 +16,7 @@ export class AppState {
 
 	}
 
+	// TODO: move state management to superclass
 	update(field, value) {
 		console.log("Updating App State:");
 		console.log("-- Field: " + field);

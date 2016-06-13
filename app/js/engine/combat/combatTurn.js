@@ -15,9 +15,11 @@ export class CombatTurn {
 		this.updateState("started");		
   }
 
+	// TODO: move state management to superclass
+
 	updateState(state) {
 		this.state = state;
-		console.log("-- updating turn state to " + state)
+		console.log("---- turn state: " + state);
 		app.render();
 	}
 
@@ -26,43 +28,54 @@ export class CombatTurn {
 	}
 
 	startPhase() {
+		var self = this;
 		this.actorControl = "ai";
 		if (this.char.isPlayer()) this.actorControl = "player";
-		this.chooseTargetPhase();
+
+		// this.chooseTargetPhase();
+		self.updateState("choosing-target");
+		console.log("---- chooseTargetPhase");
+		setTimeout(self.chooseTargetPhase.bind(self), "200" );
 	}
 
-	chooseTargetPhase() {
-		this.updateState("choosing-target");
-    this.target = this.actor.chooseTarget(this.combatants);
-		this.actPhase();
+	chooseTargetPhase(self) {
+		if (!self) self = this;
+
+    self.target = self.actor.chooseTarget(self.combatants);
+
+		// self.actPhase();
+		this.updateState("action-pending");				
+		setTimeout(self.actPhase.bind(self), "200" );		
 	}
 
-	actPhase() {
-    if (this.target) {
+	actPhase(self) {
+		if (!self) self = this;
+				
+    if (self.target) {
 			// console.log("this.actorControl: " + this.actorControl);
-	    if (this.actorControl == "ai") {
-				this.performActon();
-			} else {
-				this.updateState("action-pending");				
+
+	    if (self.actorControl == "ai") {
+				// self.performActon();
+				setTimeout(self.performActon.bind(self), "200" );		
 			}
     }
 	}
 
-	finishPhase(context) {
-		if (!context) context = this;
-		context.updateState("finished");
-		context.combat.startNextTurn();
-	}
+	performActon(self) {
+		if (!self) self = this;
 
-	performActon() {
-		var self = this;
-
-		this.updateState("acting");				
-		this.attack();
-		// this.finishPhase();
+		self.updateState("acting");				
+		self.attack();
+		// self.finishPhase();
 		setTimeout(self.finishPhase.bind(self), "200" );
 	}
 
+	finishPhase(self) {
+		if (!self) self = this;
+		self.updateState("finished");
+		self.combat.startNextTurn();
+	}
+	
   attack() {
     var attackAttempt = this.char.getCombatAbility().attackRoll();
     // console.dir("---- Attack attempt:");

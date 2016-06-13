@@ -1,6 +1,7 @@
 class Health {
 
   constructor(char) {
+		this.god = char._isGodMode;
     this.maxHp = char.getSpecial().getStats("E") * 5;
     this.hp = this.maxHp;
   }
@@ -18,11 +19,13 @@ class Health {
   }
 
   takeDamage(d) {
-    if ( (this.hp - d) <= 0 ) {
-      this.hp = 0;
-    } else {
-      this.hp -= d;
-    }
+		if (!this.god) {
+	    if ( (this.hp - d) <= 0 ) {
+	      this.hp = 0;
+	    } else {
+	      this.hp -= d;
+	    }
+		}
   }
 
   incHP(d) {

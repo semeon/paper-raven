@@ -6,6 +6,9 @@ import {CombatantList} from './combatantList.jsx';
 import {PreCombatView} from './preCombat.jsx';
 import {InCombatView} from './inCombat.jsx';
 
+import {ActivityFeed} from 'js/views/feed/feed.jsx';
+
+
 
 export class CombatView extends React.Component {
   render() {
@@ -35,10 +38,15 @@ export class CombatView extends React.Component {
 			<div className="ui attached segment">
 
 				{view}
+
+				<br/>
+				<div className="ui divider"></div>
+				
 				
 				<br/>
 				<div className="ui divider"></div>
 				<CombatantList combat={this.props.ge.getActivity()} />
+				
 			</div>
     );
   }
