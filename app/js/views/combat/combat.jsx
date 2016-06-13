@@ -16,11 +16,11 @@ export class CombatView extends React.Component {
 		var combat = this.props.combat;
 
 		var view = {};
-		console.log("== view: combat.phase: " + combat.phase);
-		if (combat.phase == "pending") {
+		console.log("== view: combat.phase: " + combat.state);
+		if (combat.state == "start") {
 			view = <PreCombatView ge={this.props.ge} combat={this.props.ge.getActivity()}/>;
 			
-		} else  if (combat.phase == "in-progress") {
+		} else  if (combat.state == "pre-turn" || combat.state == "turn") {
 			view = <InCombatView ge={this.props.ge} combat={this.props.ge.getActivity()}/>;
 			
 		} else {

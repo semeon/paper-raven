@@ -8,7 +8,7 @@ import './../../sass/container.scss';
 import './../../sass/charCard.scss';
 
 // Views
-import {Navbar}				from  'js/views/navbar/navbar.jsx';
+import {Navbar}				from  'js/views/container/navbar/navbar.jsx';
 import {Container}		from  'js/views/container/container.jsx';
 
 // import {LeftPanel} 		from 	'js/views/leftpanel/leftpanel.jsx';

@@ -51,8 +51,8 @@ export class GameEngine {
   	var combatParties = this.location.getPartiesArray();
   	combatParties.push(this.heroParty);
 
-		this.app.state.update("activity", "combat");
   	this.activity = new Combat(combatParties);
+		this.app.state.update("activity", "combat");
 		// this.activity.start();
   }
 
