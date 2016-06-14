@@ -11,44 +11,31 @@ export class Combat {
   constructor(combatParties) {
     this.parties = combatParties;
     this.combatants;
-		this.state; // pending, in-progress, completed
+		this.state; // start, in-progress, completed
     this.actor;
 		this.safetyCounter = 0;
-		
 		this.turn;
-
-    this.set();
   }
 
-  set(p) {
-		this.state = "start";
+  set() {
+		this.updateState("start");
     this.combatants = new CombatantList(this.parties);
-		console.dir(this.combatants);
-
   }
 
 	// TODO: move state management to superclass
 	updateState(state) {
 		this.state = state;
-		console.log("** combat state: " + state);
 		app.render();
 	}
 
 
-	getActor() {
-		return this.actor;
-	}
-
-	// ------------------
-
 	start() {
 		console.log("* COMBAT STARTS *");
-		
-		app.render();		
 		this.startNextTurn();
 	}
 
 
+	// -- FLOW: PRE-TURN -------------------
 	startNextTurn() {
 		this.updateState("pre-turn");
 		var self = this;
@@ -69,19 +56,27 @@ export class Combat {
 		console.log("-- Actor chosen: " + this.actor.name);
 	}
 
+	// -- FLOW: TURN -------------------
 	makeTurn() {
     if (this.actor.isActive()) { // Othervise should not happen!
-
-			console.log("-- new Combat Turn");
-
-			this.updateState("turn");
-
       this.turn = new CombatTurn(this.actor, this);
+			console.log("-- new Combat Turn");
+			this.updateState("turn");
 			this.turn.perform();
+
     } else {
     	this.startNextTurn();
     }
 	}
+
+	// -- FLOW: END -------------------
+	end() {
+		this.updateState("end");		
+		console.log("* COMBAT ENDS *");
+	}
+
+
+	// -------------------------
 
 	isOver() {
 		var result = true;
@@ -94,10 +89,8 @@ export class Combat {
 		return result;
 	}
 
-
-	end() {
-		this.updateState("turn");		
-		console.log("* COMBAT ENDS *");
-	}
-
+	getActor() {
+		return this.actor;
+	}	
+	
 }	

@@ -12,7 +12,7 @@ export class CombatTurn {
 		this.state; // started -> choosing-target -> acting -> finished
 		this.actorControl;
 		this.target;
-		this.updateState("started");		
+		this.updateState("start");		
   }
 
 	// TODO: move state management to superclass
@@ -27,11 +27,14 @@ export class CombatTurn {
 		this.startPhase();
 	}
 
+	// -- FLOW: START -------------------
 	startPhase() {
 		var self = this;
 		this.actorControl = "ai";
 		if (this.char.isPlayer()) this.actorControl = "player";
 
+
+		// -- FLOW: CHOOSE-TARGET -------------------
 		// this.chooseTargetPhase();
 		self.updateState("choosing-target");
 		console.log("---- chooseTargetPhase");
@@ -43,12 +46,13 @@ export class CombatTurn {
 
     self.target = self.actor.chooseTarget(self.combatants);
 
+		// -- FLOW: ACTION-PENDING -------------------
 		// self.actPhase();
 		this.updateState("action-pending");				
-		setTimeout(self.actPhase.bind(self), "200" );		
+		setTimeout(self.actionPendingPhase.bind(self), "200" );		
 	}
 
-	actPhase(self) {
+	actionPendingPhase(self) {
 		if (!self) self = this;
 				
     if (self.target) {
@@ -61,6 +65,7 @@ export class CombatTurn {
     }
 	}
 
+	// -- FLOW: ACTION-PERFORM -------------------
 	performActon(self) {
 		if (!self) self = this;
 
@@ -70,6 +75,7 @@ export class CombatTurn {
 		setTimeout(self.finishPhase.bind(self), "200" );
 	}
 
+	// -- FLOW: FINISH TURN -------------------
 	finishPhase(self) {
 		if (!self) self = this;
 		self.updateState("finished");
