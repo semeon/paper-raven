@@ -37,8 +37,7 @@ export class CombatTurn {
 		// -- FLOW: CHOOSE-TARGET -------------------
 		// this.chooseTargetPhase();
 		self.updateState("choosing-target");
-		console.log("---- chooseTargetPhase");
-		setTimeout(self.chooseTargetPhase.bind(self), "200" );
+		setTimeout(self.chooseTargetPhase.bind(self), "15000" );
 	}
 
 	chooseTargetPhase(self) {
@@ -49,7 +48,7 @@ export class CombatTurn {
 		// -- FLOW: ACTION-PENDING -------------------
 		// self.actPhase();
 		this.updateState("action-pending");				
-		setTimeout(self.actionPendingPhase.bind(self), "200" );		
+		setTimeout(self.actionPendingPhase.bind(self), "500" );		
 	}
 
 	actionPendingPhase(self) {
@@ -105,5 +104,11 @@ export class CombatTurn {
 
     this.result = true;
   }
+
+	getTarget() {
+		var result = false;
+		if(this.target) result = this.target;
+		return result;
+	}
 
 }

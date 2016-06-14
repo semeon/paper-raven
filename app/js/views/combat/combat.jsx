@@ -16,7 +16,7 @@ export class CombatView extends React.Component {
 		var combat = this.props.combat;
 
 		var view = {};
-		console.log("== view: combat.state: " + combat.state);
+		// console.log("== view: combat.state: " + combat.state);
 		if (combat.state == "start") {
 			view = <PreCombatView ge={this.props.ge} combat={this.props.ge.getActivity()}/>;
 			
