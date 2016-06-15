@@ -29,7 +29,6 @@ export class InCombatView extends React.Component {
 				    <img src={defImgFullPath} />
 				  </div>
 				  <div className="content">
-				    <a className="header">No Target</a>
 				    <div className="description">
 				      Please pick a target for the attack.
 				    </div>
@@ -40,18 +39,18 @@ export class InCombatView extends React.Component {
 			
 		} else {
 			targetThumb = (
-					<CharCard char={turn.target.char} abilities="defense"/>
+					<CharCard char={turn.target.char} defense="true" />
 			);
 		}
 
 		var actorCard = (
-			<div className="six wide column">
-				<CharCard char={actor.char} />
+			<div className="seven wide column">
+				<CharCard char={actor.char}  attack="true"/>
 			</div>			
 		);
 	
 		var targetCard = (
-			<div className="six wide column right floated">
+			<div className="seven wide column right floated">
 				{targetThumb}
 			</div>			
 		);	
@@ -67,15 +66,13 @@ export class InCombatView extends React.Component {
 				<div className="row">
 					{actorCard}
 
-					<div className="four wide column center aligned bottom aligned">
-						<button className={attackButtonClass} onClick={onAttackClick}>Attack</button>				
-					</div>						
-
 					{targetCard}
 				</div>
 
 				<div className="row">
 					<div className="sixteen wide column center aligned bottom aligned">
+						<button className={attackButtonClass} onClick={onAttackClick}>Attack</button>
+						<button className="ui button" onClick={onAttackClick}>Skip</button>
 					</div>
 				</div>
 			</div>	

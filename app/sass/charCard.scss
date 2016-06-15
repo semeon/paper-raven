@@ -1,15 +1,21 @@
 
 
-.card.char .label {
+.card.char > .image > .label {
 	padding: 3px;
 }
 
 .card.char .label.overflow {
 	position: absolute;
 }
+
+.card.char .label.overflow.top {
+	top: 4px;
+}
+
 .card.char .label.overflow.bottom {
 	bottom: 4px;
 }
+
 .card.char .label.overflow.left {
 	left: 4px;
 }
@@ -22,14 +28,13 @@
 	opacity: 0.5;
 }
 
-/* combat stats */
 
-.card.char > .combat-stats .ui.segment.header {
-	padding: 5px;
-}
 
-.npc .card.char > .combat-stats {
-	display: none;
+
+.card.char > .extra {
+	padding: 1em;
+	padding-top: .5em;
+	padding-bottom: .5em;
 }
 
 .card.char > .combat-stats {
@@ -46,7 +51,9 @@
 	padding: 3px;
 	font-size: 12px;
 }
+/*
 .card.char .label.wide {
 	width: 100%;
 	text-align: center;
 }
+*/

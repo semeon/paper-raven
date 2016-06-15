@@ -37,7 +37,7 @@ export class CombatTurn {
 		// -- FLOW: CHOOSE-TARGET -------------------
 		// this.chooseTargetPhase();
 		self.updateState("choosing-target");
-		setTimeout(self.chooseTargetPhase.bind(self), "15000" );
+		setTimeout(self.chooseTargetPhase.bind(self), "500" );
 	}
 
 	chooseTargetPhase(self) {
