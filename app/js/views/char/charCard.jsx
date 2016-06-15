@@ -52,6 +52,56 @@ export class CharCard extends React.Component {
       </div>			
 		);
 
+		var attackStats = (
+			<div className="content fixed-height-7em" key="attack">
+				<div className="ui middle aligned divided list">
+				  <div className="item">
+						<div className="ui stackable grid">
+					    <div className="ten wide column">Crit. hit %:</div>
+					    <div className="six wide column right aligned">{critChance}%</div>
+						</div>
+				  </div>			
+
+				  <div className="item">
+						<div className="ui stackable grid">
+					    <div className="ten wide column">Crit. hit %:</div>
+					    <div className="six wide column right aligned">{critChance}%</div>
+						</div>
+				  </div>	
+
+				  <div className="item">
+						<div className="ui stackable grid">
+				    <div className="ten wide column">Crit. dmg:</div>
+				    <div className="six wide column right aligned">x{critHit}</div>
+						</div>
+				  </div>	
+
+				</div>
+			</div>
+		);
+
+		var defenseStats = (
+			<div className="content fixed-height-7em" key="defense">
+				<div className="ui middle aligned divided list">
+				  <div className="item">
+						<div className="ui stackable grid">
+					    <div className="ten wide column">Dodge %:</div>
+					    <div className="six wide column right aligned">{dodgeChance}%</div>
+						</div>
+				  </div>			
+
+				  <div className="item">
+						<div className="ui stackable grid">
+					    <div className="ten wide column">Armour DT:</div>
+					    <div className="six wide column right aligned">{DT}</div>
+						</div>
+				  </div>	
+			
+				</div>
+			</div>
+		);
+
+
 		var dmgStats = (
 			<div className="extra content" key="dmg">
 					<div className="ui stackable grid">
@@ -61,57 +111,17 @@ export class CharCard extends React.Component {
 			</div>
 		);
 
-		var critChanceStats = (
-			<div className="extra content" key="critChance">
-					<div className="ui stackable grid">
-				    <div className="ten wide column">Crit. hit %:</div>
-				    <div className="six wide column right aligned">{critChance}%</div>
-					</div>
-			</div>
-		);
-
-		var critDmgStats = (
-			<div className="extra content" key="critDmg">
-					<div className="ui stackable grid">
-				    <div className="ten wide column">Crit. dmg:</div>
-				    <div className="six wide column right aligned">x{critHit}</div>
-					</div>
-			</div>
-		);
-
-		var dodgeStats = (
-			<div className="extra content" key="dodge">
-					<div className="ui stackable grid">
-				    <div className="ten wide column">Dodge %:</div>
-				    <div className="six wide column right aligned">{dodgeChance}%</div>
-					</div>
-			</div>
-		);
-
-		var dtStats = (
-			<div className="extra content"  key="dt">
-					<div className="ui stackable grid">
-				    <div className="ten wide column">Armour DT:</div>
-				    <div className="six wide column right aligned">{DT}</div>
-					</div>
-			</div>
-		);
-
 		if (this.props.level) {
 			stats.push(levelInfo);
 		}
 
 		if (this.props.attack) {
-			stats.push(dmgStats);
-			stats.push(critChanceStats);
-			stats.push(critDmgStats);
+			stats.push(attackStats);
 		}
 
 		if (this.props.defense) {
-			stats.push(dodgeStats);
-			stats.push(dtStats);
+			stats.push(defenseStats);
 		}
-
 
 
     return (

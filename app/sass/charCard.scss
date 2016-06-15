@@ -9,19 +9,19 @@
 }
 
 .card.char .label.overflow.top {
-	top: 4px;
+	top: .5em;
 }
 
 .card.char .label.overflow.bottom {
-	bottom: 4px;
+	bottom: .5em;
 }
 
 .card.char .label.overflow.left {
-	left: 4px;
+	left: .25em;
 }
 
 .card.char .label.overflow.right {
-	right: 4px;
+	right: .25em;
 }
 
 .card.char.thumb.selected  {
@@ -29,6 +29,13 @@
 }
 
 
+.content.fixed-height-6em {
+	min-height: 6em;
+}
+
+.content.fixed-height-7em {
+	min-height: 7em;
+}
 
 
 .card.char > .extra {
