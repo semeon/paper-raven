@@ -53,14 +53,13 @@ class CombatAbility extends Ability {
   attackRoll() { 
     var attack = {};
 
-    var baseDamage = this.dice.roll(this.damageRange.min, this.damageRange.max);
-    var damMultipier = 1;
+    attack.baseDamage = this.dice.roll(this.damageRange.min, this.damageRange.max);
+    attack.damMultipier = 1;
 
-    var isCritical = this.dice.rollBool(this.critChance);
-    if(isCritical) damMultipier = this.critMultipier;
+    attack.isCritical = this.dice.rollBool(this.critChance);
+    if(attack.isCritical) attack.damMultipier = this.critMultipier;
 
-    attack.damage = baseDamage * damMultipier;
-    attack.isCritical = isCritical;
+    attack.damage = attack.baseDamage * attack.damMultipier;
 
     return attack;
   }

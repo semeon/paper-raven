@@ -26,7 +26,6 @@ export class CharCard extends React.Component {
   		genderIconClass = "fa fa-female";
   	}
 
-
   	var cmbt = char.getCombatAbility();
   	var dmg = cmbt.getDamageRange();
   	var critChance = cmbt.getCritChance();
@@ -57,8 +56,8 @@ export class CharCard extends React.Component {
 				<div className="ui middle aligned divided list">
 				  <div className="item">
 						<div className="ui stackable grid">
-					    <div className="ten wide column">Crit. hit %:</div>
-					    <div className="six wide column right aligned">{critChance}%</div>
+					    <div className="ten wide column">Base dmg:</div>
+					    <div className="six wide column right aligned">{dmg.min}-{dmg.max}</div>
 						</div>
 				  </div>			
 
@@ -98,16 +97,6 @@ export class CharCard extends React.Component {
 				  </div>	
 			
 				</div>
-			</div>
-		);
-
-
-		var dmgStats = (
-			<div className="extra content" key="dmg">
-					<div className="ui stackable grid">
-				    <div className="ten wide column">Damage:</div>
-				    <div className="six wide column right aligned">{dmg.min}-{dmg.max}</div>
-					</div>
 			</div>
 		);
 

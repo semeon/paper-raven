@@ -1,6 +1,8 @@
 import React from 'react';
 import {render} from 'react-dom';
 
+import {logger} from 'js/engine/eventlogger/eventlogger.js';
+
 import {ActivityFeed} from 'js/views/feed/feed.jsx';
 
 export class RightPanel extends React.Component {
@@ -8,6 +10,11 @@ export class RightPanel extends React.Component {
   constructor(props) {
     super(props);
   }
+
+	componentDidUpdate() {
+		var activityFeedElement = document.getElementById("activity-feed");
+		activityFeedElement.scrollTop = activityFeedElement.scrollHeight;
+	}
 
 
   render() {
@@ -22,7 +29,7 @@ export class RightPanel extends React.Component {
 				</div>		  
 
 				<div className="ui segment" id="activity-feed">
-					<ActivityFeed />
+					<ActivityFeed data={logger.getFeed()}/>
 				</div>		  
 
 		  </div>

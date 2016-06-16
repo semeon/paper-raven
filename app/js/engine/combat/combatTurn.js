@@ -8,18 +8,23 @@ export class CombatTurn {
 		this.combat = combat;
   	this.actor = combatant;
   	this.char = combatant.char;
-    this.result = false;
+		this.attackLog = [];
+    this.result = {};
 		this.state; // started -> choosing-target -> acting -> finished
 		this.actorControl;
 		this.target;
-		this.updateState("start");		
+		this.updateState("start");	
   }
 
 	// TODO: move state management to superclass
 
 	updateState(state) {
-		this.state = state;
-		console.log("---- turn state: " + state);
+		if (state) {
+			this.state = state;
+			console.log("---- turn state: " + state);
+		} else {
+			console.log("---- turn state update without change");
+		}
 		app.render();
 	}
 
@@ -70,9 +75,13 @@ export class CombatTurn {
 
 		self.updateState("acting");				
 		self.attack();
+		self.printAttack();
+		
 		// self.finishPhase();
-		setTimeout(self.finishPhase.bind(self), "200" );
+		setTimeout(self.finishPhase.bind(self), "8000" );
 	}
+
+
 
 	// -- FLOW: FINISH TURN -------------------
 	finishPhase(self) {
@@ -82,28 +91,73 @@ export class CombatTurn {
 	}
 	
   attack() {
-    var attackAttempt = this.char.getCombatAbility().attackRoll();
+    this.result.attackAttempt = this.char.getCombatAbility().attackRoll();
     // console.dir("---- Attack attempt:");
-    // console.dir(attackAttempt);
+    // console.dir(this.result.attackAttempt);
 
-    var attackResult = this.target.char.getCombatAbility().defenseRoll(attackAttempt);
+    this.result.attackResult = this.target.char.getCombatAbility().defenseRoll(this.result.attackAttempt);
     // console.dir("---- Attack result:");
-    // console.dir(attackResult);
+    // console.dir(this.result.attackResult);
     // console.log("");
 
-    var message = this.char.getPerson().getName() + " hits " + this.target.char.getPerson().getName() + " for " + attackResult.damage + " HP";
+    var message = this.char.getPerson().getName() + " hits " + this.target.char.getPerson().getName() + " for " + this.result.attackResult.damage + " HP";
     console.log(message);
     logger.log(message);
 
-    this.target.char.receiveAttack(attackResult);
+    this.target.char.receiveAttack(this.result.attackResult);
     // console.log("---- " +  target.getPerson().getName() + " HP: " + target.getHealth().getHP() + "/" + target.getHealth().getMaxHP());
 
 		if (!this.target.char.getHealth().isAlive()) {
 			this.target.die();
 		}
-
-    this.result = true;
   }
+
+	printAttack() {
+		var actorName = this.actor.char.getPerson().getName();
+		var targetName = this.target.char.getPerson().getName();
+		
+		var message = "";
+
+		message = "Attack roll (" + actorName + ")";
+		this.delayedAttackPrint(message, 200);
+
+		message = "Base damage: " + this.result.attackAttempt.baseDamage;
+		this.delayedAttackPrint(message, 700);
+
+		if (this.result.attackAttempt.isCritical) {
+			message = "Critical hit: Yes!";
+		} else{
+			message = "Critical hit: Nope.";
+		}
+		this.delayedAttackPrint(message, 1200);
+
+		message = "Damage multiplier: " + this.result.attackAttempt.damMultipier;
+		this.delayedAttackPrint(message, 1700);
+
+		message = "Defense roll (" + targetName + ")";
+		this.delayedAttackPrint(message, 2500);
+
+
+		if (this.result.attackResult.dodged) {
+			message = "Dodge attempt: Successful!";
+		} else{
+			message = "Dodge attempt: Nope.";
+		}
+		this.delayedAttackPrint(message, 2700);
+
+		message = "Damage: " + this.result.attackResult.damage;
+		if (this.result.attackResult.isCritical) message += " (critical hit)"
+		this.delayedAttackPrint(message, 3200);
+	}	
+	
+
+	delayedAttackPrint(message, delay) {
+		var self = this;
+		setTimeout(function(){
+				self.attackLog.push(message);
+				self.updateState();
+		}, delay );
+	}
 
 	getTarget() {
 		var result = false;

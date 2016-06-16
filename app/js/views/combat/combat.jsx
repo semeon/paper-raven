@@ -41,10 +41,6 @@ export class CombatView extends React.Component {
 
 				<br/>
 				<div className="ui divider"></div>
-				
-				
-				<br/>
-				<div className="ui divider"></div>
 				<CombatantList combat={this.props.ge.getActivity()} />
 				
 			</div>

@@ -2,6 +2,15 @@
 	padding-top: 60px;
 }
 
+#activity-feed {
+	height: 300px;
+	overflow: scroll;
+}
+
+#attackLog {
+	height: 200px;
+	overflow: scroll;
+}
 
 /*
 #container-mount	 {
@@ -41,10 +50,6 @@
 	padding-top: 30px;
 	width: 470px;
 }
-
-#activity-feed {
-	height: 300px;
-	overflow: scroll;
-}
-
 */
+
+

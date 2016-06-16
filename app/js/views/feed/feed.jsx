@@ -1,20 +1,13 @@
 import React from 'react';
 import {render} from 'react-dom';
 
-import {logger} from 'js/engine/eventlogger/eventlogger.js';
-
 
 export class ActivityFeed extends React.Component {
 
-  constructor(props) {
-    super(props);
-  }
 
-  render () {
+  render() {
+		var logs = this.props.data;
   	var activityFeedRecords = [];
-		
-		var logs = logger.getFeed();
-		
   	for (var i = 0; i < logs.length; i++) {
   		var message = logs[i];
   		var record = (
@@ -30,13 +23,9 @@ export class ActivityFeed extends React.Component {
   	}
 
     return (
-
 			<div className="ui small feed">
-
 				{activityFeedRecords}
-
 			</div>
-
 		);
   }
 }
