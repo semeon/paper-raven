@@ -3,13 +3,13 @@
 }
 
 #activity-feed {
-	height: 300px;
-	overflow: scroll;
+	height: 400px;
+	overflow-y: auto;
 }
 
 #attackLog {
-	height: 200px;
-	overflow: scroll;
+	height: 130px;
+	overflow-y: auto;
 }
 
 /*
