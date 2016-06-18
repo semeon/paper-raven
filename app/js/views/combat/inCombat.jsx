@@ -19,11 +19,11 @@ export class InCombatView extends React.Component {
 		
 		// console.log("== view: turn.state: " + turn.state);
 
-		var targetThumb;
-		var attackButtonClass = "ui blue button";
+		var targetCard;
+		var attackButtonClass = "ui blue huge button fluid";
 		if ( !target ) {
 	    var defImgFullPath = appSettings.character.imagePath + appSettings.character.defImage;
-			targetThumb = (
+			targetCard = (
 				<div className="ui card">
 				  <div className="image">
 				    <img src={defImgFullPath} />
@@ -38,20 +38,20 @@ export class InCombatView extends React.Component {
 			attackButtonClass = attackButtonClass + " disabled";
 			
 		} else {
-			targetThumb = (
+			targetCard = (
 					<CharCard char={turn.target.char} defense="true" />
 			);
 		}
 
 		var actorCard = (
-			<div className="seven wide column">
+			<div className="eight wide column">
 				<CharCard char={actor.char}  attack="true"/>
 			</div>			
 		);
 	
 		var targetCard = (
-			<div className="seven wide column right floated">
-				{targetThumb}
+			<div className="eight wide column right floated">
+				{targetCard}
 			</div>			
 		);	
 		
@@ -60,36 +60,24 @@ export class InCombatView extends React.Component {
 			turn.performActon();
 		}
 
-
-		var buttonsRow = (
-				<div key="attackButtons" className="row">
-					<div className="eight wide column center aligned bottom aligned">
-						<button className={attackButtonClass} onClick={onAttackClick}>Attack</button>
-					</div>
-					<div className="eight wide column center aligned bottom aligned">
-						<button className="ui button" onClick={onAttackClick}>Skip</button>
-					</div>
-				</div>
-		);
+		if (turn.state == "acting") {
+			attackButtonClass = attackButtonClass + " disabled";
+		}
 
 		var combatLogRow = (
 				<div key="attackLog" className="row">
-					<div className="ten wide column top aligned">
+					<div className="twelve wide column top aligned">
 						<div className="ui segment" id="attackLog">
 							<ActivityFeed data={turn.attackLog}/>
 						</div>
 					</div>
+
+					<div className="four wide column top aligned">
+						<button className={attackButtonClass} onClick={onAttackClick}>Attack</button>
+					</div>
+			
 				</div>
 		);		
-
-		var bottomRows = [];
-		bottomRows.push(<div key="separator" className="ui divider"></div>);
-		
-		if (turn.state == "action-pending") {
-			bottomRows.push(buttonsRow);
-		} else if (turn.state == "acting") {
-			bottomRows.push(combatLogRow);
-		}
 	
     return (
 			<div className="ui grid">
@@ -97,7 +85,7 @@ export class InCombatView extends React.Component {
 					{actorCard}
 					{targetCard}
 				</div>
-				{bottomRows}
+				{combatLogRow}
 					
 			</div>	
     );
