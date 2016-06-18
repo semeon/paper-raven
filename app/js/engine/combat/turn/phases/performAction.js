@@ -70,25 +70,25 @@ export class PerformActionState extends StatedSequencePhase {
 		    })
 		}	
 
-		sleep(1000).then(() => {
+		sleep(500).then(() => {
 			console.log(baseDmgMsg);
 			self.context.printAttackLog(baseDmgMsg);
-	    return sleep(1000);
+	    return sleep(500);
 
 		}).then(() => {
 			console.log(critHitMsg);
 			self.context.printAttackLog(critHitMsg);
-	    return sleep(1000);
+	    return sleep(500);
 
 		}).then(() => {
 			console.log(dodgeRollMsg);
 			self.context.printAttackLog(dodgeRollMsg);
-	    return sleep(1000);
+	    return sleep(500);
 			
 		}).then(() => {
 			console.log(resDmsMsg);
 			self.context.printAttackLog(resDmsMsg);
-	    return sleep(1000);
+	    return sleep(500);
 			
 		}).then(() => {
 			self.applyAttack();

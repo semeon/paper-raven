@@ -15,7 +15,7 @@ export class InCombatView extends React.Component {
 		var actor = combat.getActor();
 
 		var turn = combat.turn;
-		var target = turn.getTarget();
+		var target = turn.target;
 		
 		// console.log("== view: turn.state: " + turn.state);
 
