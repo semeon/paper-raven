@@ -1,6 +1,9 @@
 import {logger}   from 'js/engine/eventlogger/eventlogger.js';
-
 import {app}   from 'js/app.js';
+
+import {PickTargetState}   	from './phases/pickTarget.js';
+import {StartActionState}   from './phases/startAction.js';
+import {PerformActionState}	from './phases/performAction.js';
 
 export class CombatTurn {
 
@@ -10,27 +13,30 @@ export class CombatTurn {
   	this.char = combatant.char;
 		this.attackLog = [];
     this.result = {};
-		this.state; // started -> choosing-target -> acting -> finished
+		this.state = "TURN-PICKING-TARGET";
 		this.actorControl;
 		this.target;
-		this.updateState("start");	
+		
+		this.pickTargetState = new PickTargetState(this, 1000, 1000);
+		this.startActionState = new StartActionState(this, 1000, 1000);
+		this.performActionState = new PerformActionState(this, 1000, 1000);
+		
+		this.pickTargetState.setSuccessor(this.startActionState);
+		this.startActionState.setSuccessor(this.performActionState);
   }
 
-	// TODO: move state management to superclass
-
-	updateState(state) {
-		if (state) {
-			this.state = state;
-			console.log("---- turn state: " + state);
-		} else {
-			console.log("---- turn state update without change");
-		}
+	printAttackLog(message) {
+		this.attackLog.push(message);
 		app.render();
 	}
 
+	// ENTRY POINT
 	perform() {
-		this.startPhase();
+		// this.startPhase();
+		this.pickTargetState.run();
 	}
+
+
 
 	// -- FLOW: START -------------------
 	startPhase() {
@@ -92,62 +98,68 @@ export class CombatTurn {
 	
   attack() {
     this.result.attackAttempt = this.char.getCombatAbility().attackRoll();
-    // console.dir("---- Attack attempt:");
-    // console.dir(this.result.attackAttempt);
-
     this.result.attackResult = this.target.char.getCombatAbility().defenseRoll(this.result.attackAttempt);
-    // console.dir("---- Attack result:");
-    // console.dir(this.result.attackResult);
-    // console.log("");
-
-    var message = this.char.getPerson().getName() + " hits " + this.target.char.getPerson().getName() + " for " + this.result.attackResult.damage + " HP";
-    console.log(message);
-    logger.log(message);
-
-    this.target.char.receiveAttack(this.result.attackResult);
-    // console.log("---- " +  target.getPerson().getName() + " HP: " + target.getHealth().getHP() + "/" + target.getHealth().getMaxHP());
-
-		if (!this.target.char.getHealth().isAlive()) {
-			this.target.die();
-		}
   }
 
+  applyAttack(char) {
+		// if (!self) self = this;
+		// self.target.char.receiveAttack(this.result.attackResult);
+		char.receiveAttack(this.result.attackResult);
+  }
+
+
 	printAttack() {
+		var self = this;
+		
 		var actorName = this.actor.char.getPerson().getName();
 		var targetName = this.target.char.getPerson().getName();
 		
 		var message = "";
 
-		message = "Attack roll (" + actorName + ")";
-		this.delayedAttackPrint(message, 200);
+		message = actorName + " makes base damage roll: " + this.result.attackAttempt.baseDamage;
+		this.delayedAttackPrint(message, 500);
 
-		message = "Base damage: " + this.result.attackAttempt.baseDamage;
-		this.delayedAttackPrint(message, 700);
 
+		message = actorName + " makes critical hit roll: ";
 		if (this.result.attackAttempt.isCritical) {
-			message = "Critical hit: Yes!";
+			message = message + "Success!";
 		} else{
-			message = "Critical hit: Nope.";
+			message = message + "Failed.";
 		}
-		this.delayedAttackPrint(message, 1200);
-
-		message = "Damage multiplier: " + this.result.attackAttempt.damMultipier;
-		this.delayedAttackPrint(message, 1700);
-
-		message = "Defense roll (" + targetName + ")";
-		this.delayedAttackPrint(message, 2500);
+		message = message + " Damage multiplier: x" + this.result.attackAttempt.damMultipier;
+		
+		this.delayedAttackPrint(message, 1000);
 
 
+		message = targetName + " makes dodge attempt roll: ";
 		if (this.result.attackResult.dodged) {
-			message = "Dodge attempt: Successful!";
+			message = message + "Success!";
 		} else{
-			message = "Dodge attempt: Nope.";
+			message = message + "Failed.";
 		}
-		this.delayedAttackPrint(message, 2700);
+		this.delayedAttackPrint(message, 1500);
 
-		message = "Damage: " + this.result.attackResult.damage;
+		message = "Result damage: " + this.result.attackResult.damage;
 		if (this.result.attackResult.isCritical) message += " (critical hit)"
-		this.delayedAttackPrint(message, 3200);
+		this.delayedAttackPrint(message, 2000);
+
+		message = actorName;
+		if (this.result.attackResult.isCritical) message += " critically "
+		message += " hits " + targetName + " for " + this.result.attackResult.damage + " HP";
+
+		setTimeout(function(){
+		    console.log(message);
+		    logger.log(message);
+
+				self.applyAttack(self.target.char);
+
+				if (!self.target.char.getHealth().isAlive()) {
+					self.target.die();
+				}				
+				self.updateState();
+		}, 2200 );
+	
+		
 	}	
 	
 

@@ -4,7 +4,7 @@ import {app}   from 'js/app.js';
 
 import {CombatantList} from './combatantList.js';
 import {Combatant} from './combatant.js';
-import {CombatTurn} from './combatTurn.js';
+import {CombatTurn} from './turn/combatTurn.js';
 
 export class Combat {
 
