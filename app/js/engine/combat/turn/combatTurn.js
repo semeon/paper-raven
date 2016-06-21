@@ -16,7 +16,7 @@ export class CombatTurn {
   	this.char = combatant.char;
 		this.attackLog = [];
     this.result = {};
-		this.state = "TURN-PICKING-TARGET";
+		this.state;
 		this.actorControl;
 		this.target;
 		
@@ -27,18 +27,27 @@ export class CombatTurn {
 		
 		this.pickTargetState.setSuccessor(this.startActionState);
 		this.startActionState.setSuccessor(this.performActionState);
-		this.performActionState.setSuccessor(this.finishTurnState);
+		// this.performActionState.setSuccessor(this.finishTurnState);
   }
+
+	// ENTRY POINT
+	perform() {
+		this.pickTargetState.run();
+	}
+
+	getState() {
+		if (this.state) {
+			return this.state.getState();
+		} else {
+			return false;
+		}
+	}
 
 	printAttackLog(message) {
 		this.attackLog.push(message);
 		app.render();
 	}
 
-	// ENTRY POINT
-	perform() {
-		// this.startPhase();
-		this.pickTargetState.run();
-	}
+
 
 }

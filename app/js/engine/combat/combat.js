@@ -61,8 +61,8 @@ export class Combat {
     if (this.actor.isActive()) { // Othervise should not happen!
       this.turn = new CombatTurn(this.actor, this);
 			console.log("-- new Combat Turn");
-			this.updateState("turn");
 			this.turn.perform();
+			this.updateState("turn");
 
     } else {
     	this.startNextTurn();

@@ -15,12 +15,12 @@ export class InCombatView extends React.Component {
 		var actor = combat.getActor();
 
 		var turn = combat.turn;
+		var turnState = turn.getState();
 		var target = turn.target;
 		
 		// console.log("== view: turn.state: " + turn.state);
 
 		var targetCard;
-		var attackButtonClass = "ui blue huge button fluid";
 		if ( !target ) {
 	    var defImgFullPath = appSettings.character.imagePath + appSettings.character.defImage;
 			targetCard = (
@@ -35,7 +35,6 @@ export class InCombatView extends React.Component {
 				  </div>
 				</div>
 			);
-			attackButtonClass = attackButtonClass + " disabled";
 			
 		} else {
 			targetCard = (
@@ -60,9 +59,12 @@ export class InCombatView extends React.Component {
 			turn.performActon();
 		}
 
-		if (turn.state == "acting") {
-			attackButtonClass = attackButtonClass + " disabled";
+
+		var attackButtonClass = "ui blue huge button fluid";
+		if (turn.getState() === "TURN-PERFORM-ACTION") {
+			attackButtonClass += " disabled";
 		}
+
 
 		var combatLogRow = (
 				<div key="attackLog" className="row">
