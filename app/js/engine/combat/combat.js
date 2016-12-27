@@ -6,6 +6,9 @@ import {CombatantList} from './combatantList.js';
 import {Combatant} from './combatant.js';
 import {CombatTurn} from './turn/combatTurn.js';
 
+import {PreCombatState} from './phases/preCombat.js';
+
+
 export class Combat {
 
   constructor(combatParties) {
@@ -15,6 +18,9 @@ export class Combat {
     this.actor;
 		this.safetyCounter = 0;
 		this.turn;
+
+		this.preCombatState = new PreCombatState(this, 0, 0);		
+		
   }
 
   set() {

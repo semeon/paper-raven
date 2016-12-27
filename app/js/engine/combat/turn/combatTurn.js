@@ -27,7 +27,7 @@ export class CombatTurn {
 		
 		this.pickTargetState.setSuccessor(this.startActionState);
 		this.startActionState.setSuccessor(this.performActionState);
-		// this.performActionState.setSuccessor(this.finishTurnState);
+		this.performActionState.setSuccessor(this.finishTurnState);
   }
 
 	// ENTRY POINT
